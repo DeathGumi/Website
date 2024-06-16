@@ -27,4 +27,12 @@ https://elementor.com/blog/color-theory-web-design/
 -Still want simplicity most likely using vibrant reds and simple whites could complement with Blacks
 
 Font/Psychology:
+-Want something inviting yet also catching the eye of users
+-Simplicity is key as I want users to easily navigate the page without any prior knowledge
+
+
+Info:
+timewise app
+data science(Tableu, Rstudio, Matlab)
+
 
