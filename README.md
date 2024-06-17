@@ -32,7 +32,6 @@ Font/Psychology:
 
 
 
-
 Links:
 https://musee.barvian.me/ (I Like the scroll animation-Would have to think about how to implement and if it is too much/takes away from the attention of the purpose of the website/portfolio)
 
@@ -44,6 +43,7 @@ Details:
 -Can change cursor(thinking of using a cursor)
 -Button animation(Signifier that button was pressed-page scrolls down or goes to next page-and color animation possibly)
 -Also can add a page talking about books currently reading/interests(Can combine in about section)
+-Take into account for mobile devices too!
 
 
 Info:
