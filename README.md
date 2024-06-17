@@ -37,6 +37,7 @@ Details:
 -Responsive buttons or animations
 -Can change cursor(thinking of using a cursor)
 -Button animation(Signifier that button was pressed-page scrolls down or goes to next page-and color animation possibly)
+-Also can add a page talking about books currently reading/interests(Can combine in about section)
 
 
 Info:
