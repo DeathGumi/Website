@@ -32,6 +32,12 @@ Font/Psychology:
 
 
 
+
+Links:
+https://musee.barvian.me/ (I Like the scroll animation-Would have to think about how to implement and if it is too much/takes away from the attention of the purpose of the website/portfolio)
+
+
+
 Details:
 -Bar showing how much percentage you have gone through the whole site
 -Responsive buttons or animations
