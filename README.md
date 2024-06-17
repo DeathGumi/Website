@@ -31,6 +31,13 @@ Font/Psychology:
 -Simplicity is key as I want users to easily navigate the page without any prior knowledge
 
 
+
+Details:
+-Bar showing how much percentage you have gone through the whole site
+-Responsive buttons or animations
+-Can change cursor(thinking of using a cursor)
+
+
 Info:
 timewise app
 data science(Tableu, Rstudio, Matlab)
