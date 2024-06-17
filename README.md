@@ -36,6 +36,7 @@ Details:
 -Bar showing how much percentage you have gone through the whole site
 -Responsive buttons or animations
 -Can change cursor(thinking of using a cursor)
+-Button animation(Signifier that button was pressed-page scrolls down or goes to next page-and color animation possibly)
 
 
 Info:
