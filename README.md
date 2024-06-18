@@ -37,7 +37,9 @@ https://musee.barvian.me/ (I Like the scroll animation-Would have to think about
 
 https://youtu.be/UuPt4RpV4Xc?si=HDyRD_k8bt5V32_g (Color for websites)
 
-https://www.quora.com/Design/Is-there-a-science-to-picking-colors-that-work-well-together-or-is-it-just-subjective(Color)
+https://www.quora.com/Design/Is-there-a-science-to-picking-colors-that-work-well-together-or-is-it-just-subjective (Color)
+
+https://www.pinterest.com/pin/17-minimalist-color-palettes-for-your-next-design--1041809326273935033/ (Color Pallete)
 
 
 
