@@ -42,6 +42,9 @@ https://www.quora.com/Design/Is-there-a-science-to-picking-colors-that-work-well
 https://www.pinterest.com/pin/17-minimalist-color-palettes-for-your-next-design--1041809326273935033/ (Color Pallete)
 
 
+https://www.freecodecamp.org/news/responsive-web-design-how-to-make-a-website-look-good-on-phones-and-tablets/#:~:text=The%20Viewport%20Meta%20Tag%20to,pages%20with%20default%20desktop%20settings. (How to understand flex for mobile device)
+
+
 
 Details:
 -Bar showing how much percentage you have gone through the whole site
