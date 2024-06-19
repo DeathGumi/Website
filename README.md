@@ -66,6 +66,7 @@ Details:
 -Button animation(Signifier that button was pressed-page scrolls down or goes to next page-and color animation possibly)
 -Also can add a page talking about books currently reading/interests(Can combine in about section)
 -Take into account for mobile devices too!
+-For the typfaces or fonts will probably have to find a typeface that feels heavy(uses height and contrast to seem bigger - More confidence when combining with a color like red which exudes confidence)
 
 
 
