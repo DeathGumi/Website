@@ -44,6 +44,13 @@ https://www.pinterest.com/pin/17-minimalist-color-palettes-for-your-next-design-
 
 https://www.freecodecamp.org/news/responsive-web-design-how-to-make-a-website-look-good-on-phones-and-tablets/#:~:text=The%20Viewport%20Meta%20Tag%20to,pages%20with%20default%20desktop%20settings. (How to understand flex for mobile device)
 
+Currently Reading:
+Better Web Typography for a Better Web by Matej Latin
+Refactoring UI by Adam Wathan & Steve Schoger
+Thinking with Type by Ellen Lupton
+
+
+
 
 
 Details:
@@ -53,6 +60,7 @@ Details:
 -Button animation(Signifier that button was pressed-page scrolls down or goes to next page-and color animation possibly)
 -Also can add a page talking about books currently reading/interests(Can combine in about section)
 -Take into account for mobile devices too!
+
 
 
 Info:
