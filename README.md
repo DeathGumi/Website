@@ -7,6 +7,7 @@ Features:
 
 
 Deciding whether to do one page scroll down or multiple pages
+On This Idea(Can Have big accentuated letters) and when scrolling down zoom into the letters) 
 
 
 Tech Stack: 
