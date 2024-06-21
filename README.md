@@ -50,7 +50,6 @@ https://www.quora.com/Design/Is-there-a-science-to-picking-colors-that-work-well
 
 https://www.pinterest.com/pin/17-minimalist-color-palettes-for-your-next-design--1041809326273935033/ (Color Pallete)
 
-
 https://www.freecodecamp.org/news/responsive-web-design-how-to-make-a-website-look-good-on-phones-and-tablets/#:~:text=The%20Viewport%20Meta%20Tag%20to,pages%20with%20default%20desktop%20settings. (How to understand flex for mobile device)
 
 Currently Reading:
@@ -71,6 +70,7 @@ Details:
 -Also can add a page talking about books currently reading/interests(Can combine in about section)
 -Take into account for mobile devices too!
 -For the typfaces or fonts will probably have to find a typeface that feels heavy(uses height and contrast to seem bigger - More confidence when combining with a color like red which exudes confidence)
+-Use websafe fonts possibly although we want good fonts or typefaces we dont just want to adjust for macbooks and apple devices but for devices that are older and take longer to load so even the smallest of changes of kb usage could be the difference between a usable one or a website that a user doesn't even want to use.
 
 
 
