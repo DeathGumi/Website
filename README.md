@@ -6,10 +6,13 @@ Features:
 - Home -> About ->Skills -> Education/Experience(Combined) -> Contact(Separate email)
 
 Home (Cool interface with color pallete chosen)
-About (Talk a little bit about me my activities and maybe a little bit of my family)
-Skills (User interface design, Data science, Web Dev, etc)
-Education/experience combined (Worked at bowling alley -> Cs degree at csulb)
 
+About (Talk a little bit about me my activities and maybe a little bit of my family)
+
+Skills (User interface design, Data science, Web Dev, etc)
+
+Education/experience combined (Worked at bowling alley -> Cs degree at csulb)
+could add projects and timewise
 
 Deciding whether to do one page scroll down or multiple pages
 On This Idea(Can Have big accentuated letters) and when scrolling down zoom into the letters) 
