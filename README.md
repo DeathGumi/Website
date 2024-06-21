@@ -73,6 +73,28 @@ Details:
 -Use websafe fonts possibly although we want good fonts or typefaces we dont just want to adjust for macbooks and apple devices but for devices that are older and take longer to load so even the smallest of changes of kb usage could be the difference between a usable one or a website that a user doesn't even want to use.
 
 
+Things to consider for choosing typeface:
+Goals:
+The Text:
+Typeface:Website about me
+Body text or Heading:
+Weights and styles
+Font size in kb
+Opentype - Bonus
+
+What is OpenType?
+OpenType is font format that was introduced by Adobe and Microsoft in
+1997 as a successor to the PostScript and TrueType formats (now known
+as “legacy” formats). The main benefits of this new format are:
+100% cross-platform compatibility (it works on Mac OS, Windows,
+Linux and is fully supported by the software industry)
+all font styles are grouped in a single .otf file
+larger character sets (65,536 characters per .otf instead of 210
+characters per legacy font files)
+larger character sets leads to extensive language support and
+support for advanced typographic features.
+
+
 
 Info:
 timewise app
