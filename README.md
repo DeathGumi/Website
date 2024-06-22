@@ -8,6 +8,7 @@ Features:
 Home (Cool interface with color pallete chosen)
 
 About (Talk a little bit about me my activities and maybe a little bit of my family)
+(Talk about the experience of creating the site and what I went throguh reading learning svelte and willing to read and learn more to develop better experiences for people)
 
 Skills (User interface design, Data science, Web Dev, etc)
 
