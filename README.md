@@ -76,6 +76,9 @@ Details:
 -Use websafe fonts possibly although we want good fonts or typefaces we dont just want to adjust for macbooks and apple devices but for devices that are older and take longer to load so even the smallest of changes of kb usage could be the difference between a usable one or a website that a user doesn't even want to use.(Even more specific since we are using english choose set of characters alone to save kb)
 - use Fout (Have a two fonts one good one one bad -> Shift to good one when better connections) dont use foit since invis
 - when using two different fonts remember to font smooth(What book used FF Meta(newer))
+- The ideal width of a line of text is from 45 to 75 characters—including spaces
+- ideal line height is usually between 1.3 and 1.6 times the size of the text (Darker text should have a larger line-height)
+
 
 Things to consider for choosing typeface:
 Goals:
