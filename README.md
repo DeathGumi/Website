@@ -73,7 +73,7 @@ Details:
 -For the typfaces or fonts will probably have to find a typeface that feels heavy(uses height and contrast to seem bigger - More confidence when combining with a color like red which exudes confidence)
 -Use websafe fonts possibly although we want good fonts or typefaces we dont just want to adjust for macbooks and apple devices but for devices that are older and take longer to load so even the smallest of changes of kb usage could be the difference between a usable one or a website that a user doesn't even want to use.(Even more specific since we are using english choose set of characters alone to save kb)
 - use Fout (Have a two fonts one good one one bad -> Shift to good one when better connections) dont use foit since invis
-- when using two different fonts remember to font smooth
+- when using two different fonts remember to font smooth(What book used FF Meta(newer))
 
 Things to consider for choosing typeface:
 Goals:
