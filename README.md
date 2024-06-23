@@ -53,6 +53,8 @@ https://www.pinterest.com/pin/17-minimalist-color-palettes-for-your-next-design-
 
 https://www.freecodecamp.org/news/responsive-web-design-how-to-make-a-website-look-good-on-phones-and-tablets/#:~:text=The%20Viewport%20Meta%20Tag%20to,pages%20with%20default%20desktop%20settings. (How to understand flex for mobile device)
 
+https://www.jukeboxprint.com/blog/50-of-the-best-fonts-for-designers-in-2024 (Some cool fonts)
+
 Currently Reading:
 Better Web Typography for a Better Web by Matej Latin
 Refactoring UI by Adam Wathan & Steve Schoger
