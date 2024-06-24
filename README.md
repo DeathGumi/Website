@@ -82,7 +82,8 @@ Details:
 - The ideal width of a line of text is from 45 to 75 characters—including spaces
 - ideal line height is usually between 1.3 and 1.6 times the size of the text (Darker text should have a larger line-height)
 - The recommended line height for headings is usually 1 to 1.2 times
-- Check page 60 of (better typography) for perfect typography example https://betterwebtype.com/triangle/ can practice this 
+- Check page 60 of (better typography) for perfect typography example https://betterwebtype.com/triangle/ can practice this
+- For like title of page can use typeface combinations (Example used in book was old one and new and modern one(create cosy environment)
   
 
 
