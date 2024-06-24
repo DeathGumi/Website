@@ -55,10 +55,13 @@ https://www.freecodecamp.org/news/responsive-web-design-how-to-make-a-website-lo
 
 https://www.jukeboxprint.com/blog/50-of-the-best-fonts-for-designers-in-2024 (Some cool fonts)
 
+
+
 Currently Reading:
 Better Web Typography for a Better Web by Matej Latin
 Refactoring UI by Adam Wathan & Steve Schoger
 Thinking with Type by Ellen Lupton
+https://blog.typekit.com/wp-content/uploads/2016/04/combiningtypefaces.pdf (combining typeface -Tim)
 Could add more book about ui search more
 
 
