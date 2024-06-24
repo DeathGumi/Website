@@ -86,6 +86,7 @@ Details:
 - For like title of page can use typeface combinations (Example used in book was old one and new and modern one(create cosy environment) (Should be similar in xheight visualweight/vertical rhythm)
 - https://codepen.io/matejlatin/pen/yoBdqK(example of combining with color + code is here)
 - Horizontal rhythm mostly impacts the legibility, while vertical rhythm impacts the readability of the text and establishes a sense of visual hierarchy.
+- Not using justified alignment at all
   
 
 
