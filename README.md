@@ -55,6 +55,8 @@ https://www.freecodecamp.org/news/responsive-web-design-how-to-make-a-website-lo
 
 https://www.jukeboxprint.com/blog/50-of-the-best-fonts-for-designers-in-2024 (Some cool fonts)
 
+https://x.com/joshnuss/status/1805610660954296519 (I really like this gradient style coule implement with black,red,white color palette above)
+
 
 
 Currently Reading:
