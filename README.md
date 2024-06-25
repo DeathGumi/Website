@@ -57,6 +57,8 @@ https://www.jukeboxprint.com/blog/50-of-the-best-fonts-for-designers-in-2024 (So
 
 https://x.com/joshnuss/status/1805610660954296519 (I really like this gradient style coule implement with black,red,white color palette above)
 
+https://codepen.io/matejlatin/pen/wqvKWG (Example of mobile,tablet,computer)
+
 
 
 Currently Reading:
