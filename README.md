@@ -1,6 +1,9 @@
 # Website
 Beginning of svelte/v website mini project 
 
+DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
+
+
 Features:
 - Simplistic
 - Home -> About ->Skills -> Education/Experience(Combined) -> Contact(Separate email)
