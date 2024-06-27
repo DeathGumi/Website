@@ -2,6 +2,8 @@
 Beginning of svelte/v website mini project 
 
 DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
+(Logo mini me can use ai)
+(page similar to boycoy but they use android i like a vietnamese style royal dragon)
 
 
 # Features:
