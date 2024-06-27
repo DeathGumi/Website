@@ -66,6 +66,8 @@ https://muffingroup.com/blog/red-websites/ (red modern websites to figure our wh
 
 https://github.com/emmabostian/design-inspiration/blob/master/README.md (some resources of ui pages stuff pretty cool)
 
+https://x.com/davidm_ml/status/1805969999502135710 (For the books read - Use this animation for each book)
+
 
 
 # Currently Reading:
