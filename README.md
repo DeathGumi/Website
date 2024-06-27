@@ -62,7 +62,7 @@ https://x.com/joshnuss/status/1805610660954296519 (I really like this gradient s
 
 https://codepen.io/matejlatin/pen/wqvKWG (Example of mobile,tablet,computer)
 
-https://muffingroup.com/blog/red-websites/ (red modern websites to figure our what letters to make red etc)
+https://muffingroup.com/blog/red-websites/ (red modern websites to figure our what letters to make red etc) (boycoy)
 
 
 
