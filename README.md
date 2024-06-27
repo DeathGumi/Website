@@ -4,7 +4,7 @@ Beginning of svelte/v website mini project
 DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
 
 
-Features:
+#Features:
 - Simplistic
 - Home -> About ->Skills -> Education/Experience(Combined) -> Contact(Separate email)
 
@@ -22,7 +22,7 @@ Deciding whether to do one page scroll down or multiple pages
 On This Idea(Can Have big accentuated letters) and when scrolling down zoom into the letters) 
 
 
-Tech Stack: 
+# Tech Stack: 
 
 ThreeJs - Possibly
 Svelte - Simplicity
@@ -64,9 +64,11 @@ https://codepen.io/matejlatin/pen/wqvKWG (Example of mobile,tablet,computer)
 
 https://muffingroup.com/blog/red-websites/ (red modern websites to figure our what letters to make red etc) (boycoy)
 
+https://github.com/emmabostian/design-inspiration/blob/master/README.md (some resources of ui pages stuff pretty cool)
 
 
-Currently Reading:
+
+#Currently Reading:
 Better Web Typography for a Better Web by Matej Latin
 Refactoring UI by Adam Wathan & Steve Schoger
 Thinking with Type by Ellen Lupton
@@ -77,14 +79,14 @@ Could add more book about ui search more
 
 
 
-Details:
--Bar showing how much percentage you have gone through the whole site
--Responsive buttons or animations
--Can change cursor(thinking of using a cursor)
--Button animation(Signifier that button was pressed-page scrolls down or goes to next page-and color animation possibly)
--Also can add a page talking about books currently reading/interests(Can combine in about section)
--Take into account for mobile devices too!
--For the typfaces or fonts will probably have to find a typeface that feels heavy(uses height and contrast to seem bigger - More confidence when combining with a color like red which exudes confidence)
+#Details:
+- Bar showing how much percentage you have gone through the whole site
+- Responsive buttons or animations
+- Can change cursor(thinking of using a cursor)
+-  Button animation(Signifier that button was pressed-page scrolls down or goes to next page-and color animation possibly)
+- Also can add a page talking about books currently reading/interests(Can combine in about section)
+- Take into account for mobile devices too!
+- For the typfaces or fonts will probably have to find a typeface that feels heavy(uses height and contrast to seem bigger - More confidence when combining with a color like red which exudes confidence)
 -Use websafe fonts possibly although we want good fonts or typefaces we dont just want to adjust for macbooks and apple devices but for devices that are older and take longer to load so even the smallest of changes of kb usage could be the difference between a usable one or a website that a user doesn't even want to use.(Even more specific since we are using english choose set of characters alone to save kb)
 - use Fout (Have a two fonts one good one one bad -> Shift to good one when better connections) dont use foit since invis
 - when using two different fonts remember to font smooth(What book used FF Meta(newer))
@@ -100,7 +102,7 @@ Details:
 -  Can use drop for visual attention like Hi! 
 
 
-Things to consider for choosing typeface:
+#Things to consider for choosing typeface:
 Goals:
 The Text:
 Typeface:Website about me
@@ -123,7 +125,7 @@ support for advanced typographic features.
 
 
 
-Info:
+#Info:
 timewise app
 data science(Tableu, Rstudio, Matlab)
 
