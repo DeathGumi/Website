@@ -4,7 +4,7 @@ Beginning of svelte/v website mini project
 DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
 
 
-#Features:
+# Features:
 - Simplistic
 - Home -> About ->Skills -> Education/Experience(Combined) -> Contact(Separate email)
 
@@ -30,22 +30,22 @@ Vercel - For web service
 
 
 
-Good Web designs
+# Good Web designs
 https://www.hostinger.com/tutorials/web-developer-portfolio#1_Charles_Bruyerre
 
 
-Color Theory:
+# Color Theory:
 https://elementor.com/blog/color-theory-web-design/
 
 -Still want simplicity most likely using vibrant reds and simple whites could complement with Blacks
 
-Font/Psychology:
+# Font/Psychology:
 -Want something inviting yet also catching the eye of users
 -Simplicity is key as I want users to easily navigate the page without any prior knowledge
 
 
 
-Links:
+# Links:
 https://musee.barvian.me/ (I Like the scroll animation-Would have to think about how to implement and if it is too much/takes away from the attention of the purpose of the website/portfolio)
 
 https://youtu.be/UuPt4RpV4Xc?si=HDyRD_k8bt5V32_g (Color for websites)
@@ -68,7 +68,7 @@ https://github.com/emmabostian/design-inspiration/blob/master/README.md (some re
 
 
 
-#Currently Reading:
+# Currently Reading:
 Better Web Typography for a Better Web by Matej Latin
 Refactoring UI by Adam Wathan & Steve Schoger
 Thinking with Type by Ellen Lupton
@@ -79,7 +79,7 @@ Could add more book about ui search more
 
 
 
-#Details:
+# Details:
 - Bar showing how much percentage you have gone through the whole site
 - Responsive buttons or animations
 - Can change cursor(thinking of using a cursor)
@@ -102,7 +102,7 @@ Could add more book about ui search more
 -  Can use drop for visual attention like Hi! 
 
 
-#Things to consider for choosing typeface:
+# Things to consider for choosing typeface:
 Goals:
 The Text:
 Typeface:Website about me
