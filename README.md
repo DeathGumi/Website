@@ -70,6 +70,8 @@ https://github.com/emmabostian/design-inspiration/blob/master/README.md (some re
 
 https://x.com/davidm_ml/status/1805969999502135710 (For the books read - Use this animation for each book)
 
+https://x.com/socoloffalex/status/1806589283311980878(this twitter post similar to what i want/boycoy -> could switch up with vietnamese charcters and instead pf straight lines could improve by using different strucs)
+
 
 
 # Currently Reading:
