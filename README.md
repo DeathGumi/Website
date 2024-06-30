@@ -1,6 +1,8 @@
 # Website
 Beginning of svelte/v website mini project 
 
+Using framer not figma
+
 DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
 (Logo mini me can use ai)
 (page similar to boycoy but they use android i like a vietnamese style royal dragon)
