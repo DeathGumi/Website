@@ -1,7 +1,7 @@
 # Website
 Beginning of svelte/v website mini project 
 
-Using framer not figma
+Using framer not figma(Using the framer animation possibly use a dragon animation into word/logo
 
 DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
 (Logo mini me can use ai)
