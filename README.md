@@ -4,7 +4,11 @@ Beginning of svelte/v website mini project
 
 # Framer
 Using framer not figma(Using the framer animation possibly use a dragon animation into word/logo
-- Use this animation https://x.com/socoloffalex into https://www.youtube.com/watch?v=dpWIkVfnd2g&ab_channel=ToniJ%C3%A4rvinen-DesignTutorials
+- Use this animation https://x.com/socoloffalex/status/1806589283311980878 into https://www.youtube.com/watch?v=dpWIkVfnd2g&ab_channel=ToniJ%C3%A4rvinen-DesignTutorials
+
+- Black: #0C120C
+- Red: #CC2114
+- Gray: #C7D6D5
 
 DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
 (Logo mini me can use ai)
