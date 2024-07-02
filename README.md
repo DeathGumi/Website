@@ -11,8 +11,7 @@ Using framer not figma(Using the framer animation possibly use a dragon animatio
 - Gray: #C7D6D5
 
 DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
-(Logo mini me can use ai)
-(page similar to boycoy but they use android i like a vietnamese style royal dragon)
+(Using just family name Ton that in chu nom as logo) -> Keep simplicity
 Sidebar scroll animation(Make fade in n out to not disrupt the visuals:possibly just make it regular sidebar completion animation
 
 
