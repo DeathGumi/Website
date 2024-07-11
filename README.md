@@ -8,7 +8,8 @@ Using framer not figma(Using the framer animation possibly use a dragon animatio
 - https://framer.com/projects/Start-Craft-Remix-copy--1xrh7EANRfE2Vxwb4Vff-bc2rv?node=augiA20Il (Framer example)
 - https://framer.com/projects/Sawad-copy--Q3KZuTFRjKt8UFJGGbZM-5x7wZ?fp_sid=sawad&node=augiA20Il (Example for picture profile)
 - For scroll down after first animation can us like read or white arrow saying scroll down
-- Taskbar first page after animation finishes fades in
+- Taskbar first page after animation finishes fades in ( https://appverse.framer.website/#blog) this taskbar i like! follows 
+  
 
 - Black: #0C120C
 - Red: #CC2114
