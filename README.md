@@ -7,7 +7,7 @@ Using framer not figma(Using the framer animation possibly use a dragon animatio
 - Use this animation https://x.com/socoloffalex/status/1806589283311980878 into https://www.youtube.com/watch?v=dpWIkVfnd2g&ab_channel=ToniJ%C3%A4rvinen-DesignTutorials
 - https://framer.com/projects/Start-Craft-Remix-copy--1xrh7EANRfE2Vxwb4Vff-bc2rv?node=augiA20Il (Framer example)
 - https://framer.com/projects/Sawad-copy--Q3KZuTFRjKt8UFJGGbZM-5x7wZ?fp_sid=sawad&node=augiA20Il (Example for picture profile)
-- For scroll down after first animation can us like read or white arrow saying scroll down
+- For scroll down after first animation can us like read or white arrow saying scroll down (First page) 
 - Taskbar first page after animation finishes fades in ( https://appverse.framer.website/#blog) this taskbar i like! follows 
   
 
