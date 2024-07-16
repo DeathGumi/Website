@@ -26,6 +26,10 @@ Sidebar scroll animation(Make fade in n out to not disrupt the visuals:possibly 
 
 
 
+- Home(Nam) Ton That (In chu nom) - roll in animation (then after topbar appears in and tells you to scroll down)
+
+
+
 
 
 
