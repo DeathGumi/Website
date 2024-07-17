@@ -27,6 +27,7 @@ Sidebar scroll animation(Make fade in n out to not disrupt the visuals:possibly 
 
 
 - Home(Nam) Ton That (In chu nom) - roll in animation (then after topbar appears in and tells you to scroll down)
+- About (I need a picture of myself first) - Viet/American College Senior Ux/ui Ai, Data visualization (Tableu, etc)
 
 
 
