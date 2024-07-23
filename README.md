@@ -15,6 +15,7 @@ Using framer not figma(Using the framer animation possibly use a dragon animatio
 - Black: #0C120C
 - Red: #CC2114
 - Gray: #C7D6D5
+- White: #EBE1E1 (For the taskbar)
 
 DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
 (Using just family name Ton that in chu nom as logo) -> Keep simplicity
