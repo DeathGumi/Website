@@ -1,5 +1,6 @@
 # Website
 Beginning of svelte/v website mini project 
+https://framer.com/projects/Nam-prac--NrsnozhNvvcNIcQFcbUG-1EOhp?node=bPJ0zlbQz
 
 
 # Framer
@@ -31,6 +32,9 @@ Sidebar scroll animation(Make fade in n out to not disrupt the visuals:possibly 
 - Skills Ux/ui Ai, Data visualization (Tableu, etc)
 - Education/ex[erience College Senior (csulb 2024)
 - contact (other email)
+
+# Documentation 
+- July 22 (Adding scrollbar logo(chu nom) -> still need to make other iterations for pages)
 
 
 
