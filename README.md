@@ -8,7 +8,7 @@ Using framer not figma(Using the framer animation possibly use a dragon animatio
 - https://framer.com/projects/Start-Craft-Remix-copy--1xrh7EANRfE2Vxwb4Vff-bc2rv?node=augiA20Il (Framer example)
 - https://framer.com/projects/Sawad-copy--Q3KZuTFRjKt8UFJGGbZM-5x7wZ?fp_sid=sawad&node=augiA20Il (Example for picture profile)
 - For scroll down after first animation can us like read or red arrow saying scroll down (First page) can be floating (moving up and down but if too distracting just do static)
-- Taskbar first page after animation finishes fades in ( https://appverse.framer.website/#blog) this taskbar is something i want - follows as the user scrolls down
+- Taskbar first page after animation finishes fades in ( https://framer.com/projects/Appverse-Ultimate-App-showcase-and-Startup-template-copy--pRfWY3w3m8Nv14ZZCFeR-gv8eH?node=augiA20Il ) this taskbar is something i want - follows as the user scrolls down (website has the multiple dif) (mobile has bar that shows up)
   
 
 - Black: #0C120C
