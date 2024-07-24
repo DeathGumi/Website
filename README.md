@@ -36,7 +36,7 @@ Sidebar scroll animation(Make fade in n out to not disrupt the visuals:possibly 
 
 # Documentation 
 - July 22 (Adding scrollbar logo(chu nom) -> still need to make other iterations for pages)
-
+- July 23 (Still adjusting bar got the scroll bar for the page to be setup (Still need to set up the sections first then do the connections to the pages)
 
 
 
