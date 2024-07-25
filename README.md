@@ -11,10 +11,12 @@ Using framer not figma(Using the framer animation possibly use a dragon animatio
 - For scroll down after first animation can us like read or red arrow saying scroll down (First page) can be floating (moving up and down but if too distracting just do static)
 - Taskbar first page after animation finishes fades in ( https://framer.com/projects/Appverse-Ultimate-App-showcase-and-Startup-template-copy--pRfWY3w3m8Nv14ZZCFeR-gv8eH?node=augiA20Il ) this taskbar is something i want - follows as the user scrolls down (website has the multiple dif) (mobile has bar that shows up)
   
-
+Color pallete
 - Black: #0C120C
 - Red: #CC2114
 - Gray: #C7D6D5
+
+Taskbar
 - White: #EBE1E1 (For the taskbar)
 
 DESIGN/CREATE LAYOUT FIRST -> ADD FEATURES AFTER(Use typeface and Colors later)
