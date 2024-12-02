@@ -50,7 +50,7 @@ const NameAnimation = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-      <div className="flex gap-8"> {/* Increased gap between columns */}
+      <div className="flex gap-8"> 
         {/* NAM - vertical, white */}
         <div className="flex flex-col gap-4">
           {letters.slice(0, 3).map((letter, index) => (
@@ -71,7 +71,12 @@ const NameAnimation = () => {
                     stiffness: 200
                   }
                 }}
-                className="text-8xl font-bold text-center w-24 h-24 flex items-center justify-center text-white"
+                style={{
+                  fontFamily: 'Optima, Candara, sans-serif',
+                  fontWeight: 700,  
+                  letterSpacing: '0.01em'
+                }}
+                className="text-8xl text-center w-24 h-24 flex items-center justify-center text-white"
               >
                 {letter || ' '}
               </motion.div>
@@ -99,7 +104,12 @@ const NameAnimation = () => {
                     stiffness: 200
                   }
                 }}
-                className="text-8xl font-bold text-center w-24 h-24 flex items-center justify-center text-[#CC2114]"
+                style={{
+                  fontFamily: 'Optima, Candara, sans-serif',
+                  fontWeight: 700,  
+                  letterSpacing: '0.01em'
+                }}
+                className="text-8xl text-center w-24 h-24 flex items-center justify-center text-[#CC2114]"
               >
                 {letter || ' '}
               </motion.div>
