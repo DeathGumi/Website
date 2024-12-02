@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160">
+  <!-- First character 尊 -->
+  <path d="M10 10 h80 v10 h-35 v10 h25 v10 h-25 v10 h35 v10 h-80 v-10 h35 v-10 h-25 v-10 h25 v-10 h-35 z" fill="#CC2114"/>
+  
+  <!-- Horizontal bars connecting parts -->
+  <path d="M20 30 h60 v5 h-60 z" fill="#CC2114"/>
+  <path d="M30 45 h40 v5 h-40 z" fill="#CC2114"/>
+  
+  <!-- Bottom sections of first character -->
+  <path d="M25 60 h50 v10 h-50 z" fill="#CC2114"/>
+  
+  <!-- Second character 室 -->
+  <path d="M10 90 h80 v10 h-30 v50 h-20 v-50 h-30 z" fill="#CC2114"/>
+  
+  <!-- Internal details of second character -->
+  <path d="M25 110 h50 v5 h-50 z" fill="#CC2114"/>
+  <path d="M35 125 h30 v5 h-30 z" fill="#CC2114"/>
+</svg>

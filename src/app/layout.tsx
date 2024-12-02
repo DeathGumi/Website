@@ -15,7 +15,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   icons: {
-    icon: '/logo.png',  
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' }, // SVG
+      { url: '/logo.png', type: 'image/png' }  // PNG fallback
+    ],
   }
 }
 
