@@ -50,7 +50,7 @@ const NameAnimation = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-      <div className="flex gap-16"> {/* Increased gap between columns */}
+      <div className="flex gap-8"> {/* Increased gap between columns */}
         {/* NAM - vertical, white */}
         <div className="flex flex-col gap-4">
           {letters.slice(0, 3).map((letter, index) => (
