@@ -2,11 +2,13 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import ScrollIndicator from './ScrollIndicator';
+import SlidingTitle from './SlidingTitle';
 
 const NameAnimation = () => {
   const [letters, setLetters] = useState<string[]>(Array(6).fill(''));
   const [namComplete, setNamComplete] = useState<boolean>(false);
   const [tonComplete, setTonComplete] = useState<boolean>(false);
+  const [titleComplete, setTitleComplete] = useState<boolean>(false);
   
   const multilingualChars: string[] = [
     // Vietnamese
@@ -39,7 +41,6 @@ const NameAnimation = () => {
       }
     }, 50);
 
-    
     const namTimeout = setTimeout(() => {
       setNamComplete(true);
       setLetters(current => [...namLetters, ...current.slice(3)]);
@@ -52,10 +53,8 @@ const NameAnimation = () => {
     };
   }, []);
 
-  // Separate effect for TON animation
   useEffect(() => {
     if (namComplete && !tonComplete) {
-      // Start TON cycle after NAM completes
       const tonCycleInterval = setInterval(() => {
         setLetters(current => [
           ...current.slice(0, 3),
@@ -65,7 +64,6 @@ const NameAnimation = () => {
         ]);
       }, 50);
 
-    
       const tonTimeout = setTimeout(() => {
         setTonComplete(true);
         setLetters([...namLetters, ...tonLetters]);
@@ -81,74 +79,77 @@ const NameAnimation = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 relative">
-      <div className="flex gap-8"> 
-        {/* NAM - vertical, white */}
-        <div className="flex flex-col gap-4">
-          {letters.slice(0, 3).map((letter, index) => (
-            <AnimatePresence mode="wait" key={`nam-${index}`}>
-              <motion.div
-                key={`${letter}-nam-${index}`}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ 
-                  opacity: 1, 
-                  x: 0,
-                  scale: namComplete ? 1.2 : 1,
-                }}
-                transition={{ 
-                  duration: 0.15,
-                  scale: { 
-                    duration: 0.3,
-                    type: "spring",
-                    stiffness: 200
-                  }
-                }}
-                style={{
-                  fontFamily: 'Optima, Candara, sans-serif',
-                  fontWeight: 700,  
-                  letterSpacing: '0.01em'
-                }}
-                className="text-8xl text-center w-24 h-24 flex items-center justify-center text-white"
-              >
-                {letter || ' '}
-              </motion.div>
-            </AnimatePresence>
-          ))}
-        </div>
+      <div className="flex flex-col items-center">
+        <div className="flex gap-8"> 
+          {/* NAM - vertical, white */}
+          <div className="flex flex-col gap-4">
+            {letters.slice(0, 3).map((letter, index) => (
+              <AnimatePresence mode="wait" key={`nam-${index}`}>
+                <motion.div
+                  key={`${letter}-nam-${index}`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ 
+                    opacity: 1, 
+                    x: 0,
+                    scale: namComplete ? 1.2 : 1,
+                  }}
+                  transition={{ 
+                    duration: 0.15,
+                    scale: { 
+                      duration: 0.3,
+                      type: "spring",
+                      stiffness: 200
+                    }
+                  }}
+                  style={{
+                    fontFamily: 'Optima, Candara, sans-serif',
+                    fontWeight: 700,  
+                    letterSpacing: '0.01em'
+                  }}
+                  className="text-8xl text-center w-24 h-24 flex items-center justify-center text-white"
+                >
+                  {letter || ' '}
+                </motion.div>
+              </AnimatePresence>
+            ))}
+          </div>
 
-        {/* TON - vertical, red */}
-        <div className="flex flex-col gap-4">
-          {letters.slice(3).map((letter, index) => (
-            <AnimatePresence mode="wait" key={`ton-${index}`}>
-              <motion.div
-                key={`${letter}-ton-${index}`}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ 
-                  opacity: 1, 
-                  x: 0,
-                  scale: tonComplete ? 1.2 : 1,
-                }}
-                transition={{ 
-                  duration: 0.15,
-                  scale: { 
-                    duration: 0.3,
-                    type: "spring",
-                    stiffness: 200
-                  }
-                }}
-                style={{
-                  fontFamily: 'Optima, Candara, sans-serif',
-                  fontWeight: 700,  
-                  letterSpacing: '0.01em'
-                }}
-                className="text-8xl text-center w-24 h-24 flex items-center justify-center text-[#CC2114]"
-              >
-                {letter || ' '}
-              </motion.div>
-            </AnimatePresence>
-          ))}
+          {/* TON - vertical, red */}
+          <div className="flex flex-col gap-4">
+            {letters.slice(3).map((letter, index) => (
+              <AnimatePresence mode="wait" key={`ton-${index}`}>
+                <motion.div
+                  key={`${letter}-ton-${index}`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ 
+                    opacity: 1, 
+                    x: 0,
+                    scale: tonComplete ? 1.2 : 1,
+                  }}
+                  transition={{ 
+                    duration: 0.15,
+                    scale: { 
+                      duration: 0.3,
+                      type: "spring",
+                      stiffness: 200
+                    }
+                  }}
+                  style={{
+                    fontFamily: 'Optima, Candara, sans-serif',
+                    fontWeight: 700,  
+                    letterSpacing: '0.01em'
+                  }}
+                  className="text-8xl text-center w-24 h-24 flex items-center justify-center text-[#CC2114]"
+                >
+                  {letter || ' '}
+                </motion.div>
+              </AnimatePresence>
+            ))}
+          </div>
         </div>
+        <SlidingTitle show={tonComplete} onAnimationComplete={() => setTitleComplete(true)} />
       </div>
-      <ScrollIndicator show={tonComplete} />
+      <ScrollIndicator show={titleComplete} />
     </div>
   );
 };

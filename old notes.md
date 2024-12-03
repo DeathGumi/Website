@@ -77,6 +77,8 @@ Vercel - For web service
 
 # Good Web designs
 https://www.hostinger.com/tutorials/web-developer-portfolio#1_Charles_Bruyerre
+https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2022/06/Keita-Yamadas-designer-and-web-developer-portfolio.webp 
+Comment : (Minimalistic text navigation (Search this up for ideas the website above had good example))
 
 
 # Color Theory:
