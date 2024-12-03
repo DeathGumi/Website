@@ -1,6 +1,7 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import ScrollIndicator from './ScrollIndicator';
 
 const NameAnimation = () => {
   const [letters, setLetters] = useState<string[]>(Array(6).fill(''));
@@ -49,7 +50,7 @@ const NameAnimation = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 relative">
       <div className="flex gap-8"> 
         {/* NAM - vertical, white */}
         <div className="flex flex-col gap-4">
@@ -117,6 +118,7 @@ const NameAnimation = () => {
           ))}
         </div>
       </div>
+      <ScrollIndicator show={isComplete} />
     </div>
   );
 };
