@@ -6,7 +6,10 @@ const ScrollIndicator = ({ show = false }) => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: show ? 1 : 0 }}
-      transition={{ duration: 1.5 }}
+      transition={{ 
+        duration: 1.5,    
+        delay: 0.5       
+      }}
       className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
     >
       <motion.p 
