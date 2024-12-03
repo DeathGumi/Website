@@ -5,7 +5,8 @@ import ScrollIndicator from './ScrollIndicator';
 
 const NameAnimation = () => {
   const [letters, setLetters] = useState<string[]>(Array(6).fill(''));
-  const [isComplete, setIsComplete] = useState<boolean>(false);
+  const [namComplete, setNamComplete] = useState<boolean>(false);
+  const [tonComplete, setTonComplete] = useState<boolean>(false);
   
   const multilingualChars: string[] = [
     // Vietnamese
@@ -22,32 +23,61 @@ const NameAnimation = () => {
 
   const namLetters: string[] = ['N', 'A', 'M'];
   const tonLetters: string[] = ['T', 'O', 'N'];
-  const totalDuration: number = 2000; // 2 seconds
+  const namDuration: number = 1500; 
+  const tonDelay: number = 1500; 
   
   useEffect(() => {
-    // Single interval for cycling all letters
-    const cycleInterval = setInterval(() => {
-      if (!isComplete) {
-        setLetters(current => 
-          current.map(() => multilingualChars[
-            Math.floor(Math.random() * multilingualChars.length)
-          ])
-        );
+    // Cycle interval for NAM
+    const namCycleInterval = setInterval(() => {
+      if (!namComplete) {
+        setLetters(current => [
+          ...current.slice(0, 3).map(() => 
+            multilingualChars[Math.floor(Math.random() * multilingualChars.length)]
+          ),
+          ...current.slice(3)
+        ]);
       }
-    }, 50); // Cycle speed
+    }, 50);
 
-    // Set final state after 2 seconds
-    const finalTimeout = setTimeout(() => {
-      setIsComplete(true);
-      setLetters([...namLetters, ...tonLetters]);
-      clearInterval(cycleInterval);
-    }, totalDuration);
+    
+    const namTimeout = setTimeout(() => {
+      setNamComplete(true);
+      setLetters(current => [...namLetters, ...current.slice(3)]);
+      clearInterval(namCycleInterval);
+    }, namDuration);
 
     return () => {
-      clearInterval(cycleInterval);
-      clearTimeout(finalTimeout);
+      clearInterval(namCycleInterval);
+      clearTimeout(namTimeout);
     };
   }, []);
+
+  // Separate effect for TON animation
+  useEffect(() => {
+    if (namComplete && !tonComplete) {
+      // Start TON cycle after NAM completes
+      const tonCycleInterval = setInterval(() => {
+        setLetters(current => [
+          ...current.slice(0, 3),
+          ...Array(3).fill('').map(() => 
+            multilingualChars[Math.floor(Math.random() * multilingualChars.length)]
+          )
+        ]);
+      }, 50);
+
+    
+      const tonTimeout = setTimeout(() => {
+        setTonComplete(true);
+        setLetters([...namLetters, ...tonLetters]);
+        clearInterval(tonCycleInterval);
+      }, tonDelay);
+
+      return () => {
+        clearInterval(tonCycleInterval);
+        clearTimeout(tonTimeout);
+      };
+    }
+  }, [namComplete]);
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 relative">
@@ -62,7 +92,7 @@ const NameAnimation = () => {
                 animate={{ 
                   opacity: 1, 
                   x: 0,
-                  scale: isComplete ? 1.2 : 1,
+                  scale: namComplete ? 1.2 : 1,
                 }}
                 transition={{ 
                   duration: 0.15,
@@ -95,7 +125,7 @@ const NameAnimation = () => {
                 animate={{ 
                   opacity: 1, 
                   x: 0,
-                  scale: isComplete ? 1.2 : 1,
+                  scale: tonComplete ? 1.2 : 1,
                 }}
                 transition={{ 
                   duration: 0.15,
@@ -118,7 +148,7 @@ const NameAnimation = () => {
           ))}
         </div>
       </div>
-      <ScrollIndicator show={isComplete} />
+      <ScrollIndicator show={tonComplete} />
     </div>
   );
 };
