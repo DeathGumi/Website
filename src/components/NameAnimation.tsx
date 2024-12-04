@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import ScrollIndicator from './ScrollIndicator';
 import SlidingTitle from './SlidingTitle';
+import ParallaxBackground from './ParallaxBackground';
 
 const NameAnimation = () => {
   const [letters, setLetters] = useState<string[]>(Array(6).fill(''));
@@ -78,8 +79,9 @@ const NameAnimation = () => {
   }, [namComplete]);
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 relative">
-      <div className="flex flex-col items-center">
+    <div className="relative flex justify-center items-center min-h-screen overflow-hidden">
+      <ParallaxBackground />
+      <div className="flex flex-col items-center relative z-10">
         <div className="flex gap-8"> 
           {/* NAM - vertical, white */}
           <div className="flex flex-col gap-4">
@@ -104,9 +106,10 @@ const NameAnimation = () => {
                   style={{
                     fontFamily: 'Optima, Candara, sans-serif',
                     fontWeight: 700,  
-                    letterSpacing: '0.01em'
+                    letterSpacing: '0.01em',
+                    textShadow: '0 0 15px rgba(255,255,255,0.3)'
                   }}
-                  className="text-8xl text-center w-24 h-24 flex items-center justify-center text-white"
+                  className="text-8xl text-center w-24 h-24 flex items-center justify-center text-white hover:scale-110 transition-transform duration-200"
                 >
                   {letter || ' '}
                 </motion.div>
@@ -137,9 +140,10 @@ const NameAnimation = () => {
                   style={{
                     fontFamily: 'Optima, Candara, sans-serif',
                     fontWeight: 700,  
-                    letterSpacing: '0.01em'
+                    letterSpacing: '0.01em',
+                    textShadow: '0 0 15px rgba(204,33,20,0.3)'
                   }}
-                  className="text-8xl text-center w-24 h-24 flex items-center justify-center text-[#CC2114]"
+                  className="text-8xl text-center w-24 h-24 flex items-center justify-center text-[#CC2114] hover:scale-110 transition-transform duration-200"
                 >
                   {letter || ' '}
                 </motion.div>
