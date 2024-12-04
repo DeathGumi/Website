@@ -89,26 +89,17 @@ const NameAnimation = () => {
               <AnimatePresence mode="wait" key={`nam-${index}`}>
                 <motion.div
                   key={`${letter}-nam-${index}`}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: 1, 
-                    x: 0,
-                  }}
-                  transition={{ 
-                    duration: 0.15,
-                    scale: { 
-                      duration: 0.3,
-                      type: "spring",
-                      stiffness: 200
-                    }
-                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.15 }}
                   style={{
                     fontFamily: 'Optima, Candara, sans-serif',
                     fontWeight: 700,  
                     letterSpacing: '0.01em',
-                    textShadow: '0 0 15px rgba(255,255,255,0.3)'
+                    textShadow: '0 0 15px rgba(255,255,255,0.3)',
+                    fontSize: '9rem'
                   }}
-                  className="text-8xl text-center w-24 h-24 flex items-center justify-center text-white hover:scale-110 transition-transform duration-200"
+                  className="w-32 h-32 flex items-center justify-center text-white"
                 >
                   {letter || ' '}
                 </motion.div>
@@ -122,21 +113,17 @@ const NameAnimation = () => {
               <AnimatePresence mode="wait" key={`ton-${index}`}>
                 <motion.div
                   key={`${letter}-ton-${index}`}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: 1, 
-                    x: 0,
-                  }}
-                  transition={{ 
-                    duration: 0.15,
-                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.15 }}
                   style={{
                     fontFamily: 'Optima, Candara, sans-serif',
                     fontWeight: 700,  
                     letterSpacing: '0.01em',
-                    textShadow: '0 0 15px rgba(204,33,20,0.3)'
+                    textShadow: '0 0 15px rgba(204,33,20,0.3)',
+                    fontSize: '9rem'
                   }}
-                  className="text-8xl text-center w-24 h-24 flex items-center justify-center text-[#CC2114] hover:scale-110 transition-transform duration-200"
+                  className="w-32 h-32 flex items-center justify-center text-[#CC2114]"
                 >
                   {letter || ' '}
                 </motion.div>
