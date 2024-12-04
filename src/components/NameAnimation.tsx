@@ -93,7 +93,6 @@ const NameAnimation = () => {
                   animate={{ 
                     opacity: 1, 
                     x: 0,
-                    scale: namComplete ? 1.2 : 1,
                   }}
                   transition={{ 
                     duration: 0.15,
@@ -127,15 +126,9 @@ const NameAnimation = () => {
                   animate={{ 
                     opacity: 1, 
                     x: 0,
-                    scale: tonComplete ? 1.2 : 1,
                   }}
                   transition={{ 
                     duration: 0.15,
-                    scale: { 
-                      duration: 0.3,
-                      type: "spring",
-                      stiffness: 200
-                    }
                   }}
                   style={{
                     fontFamily: 'Optima, Candara, sans-serif',
