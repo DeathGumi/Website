@@ -27,7 +27,7 @@ const ExperienceSection = () => {
       role: "Team Lead & Technical Product Owner",
       links: [
         { url: "https://github.com/gsdyu/Calcoy", icon: <Github className="w-5 h-5" />, text: "GitHub" },
-        { url: "https://www.calcoy.com/", icon: <ExternalLink className="w-5 h-5" />, text: "Live Site" }
+        { url: "https://www.calcoy.com/", icon: <ExternalLink className="w-5 h-5" />, text: "CalCoy.com" }
       ]
     },
     {
