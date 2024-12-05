@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { Moon, Sun } from 'lucide-react';
 
 const ParallaxBackground = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isDayTime, setIsDayTime] = useState(true);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -24,21 +25,72 @@ const ParallaxBackground = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Theme toggle button component
+  const ThemeToggle = () => (
+    <motion.button
+      onClick={() => setIsDayTime(!isDayTime)}
+      className="fixed top-4 right-4 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors z-50 flex items-center gap-2"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      {isDayTime ? (
+        <>
+          <Moon className="w-5 h-5 text-white" />
+          <span className="text-white text-sm">Dark Mode</span>
+        </>
+      ) : (
+        <>
+          <Sun className="w-5 h-5 text-white" />
+          <span className="text-white text-sm">Light Mode</span>
+        </>
+      )}
+    </motion.button>
+  );
+
+  // Stars component
+  const Stars = () => (
+    <motion.div 
+      className="absolute inset-0"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isDayTime ? 0 : 0.8 }}
+      transition={{ duration: 2 }}
+    >
+      {[...Array(50)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 60}%`,
+            animationDelay: `${Math.random() * 2}s`,
+          }}
+        />
+      ))}
+    </motion.div>
+  );
+
   return (
     <div className="fixed inset-0 overflow-hidden">
+      <ThemeToggle />
+      
       {/* Container with scale to prevent edge showing */}
       <div className="absolute inset-[-10%] scale-[1.2]">
         {/* Sky gradient background */}
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 transition-colors duration-1000"
           style={{
-            background: 'linear-gradient(180deg, #2C5282 0%, #4299E1 100%)',
+            background: isDayTime 
+              ? 'linear-gradient(180deg, #2C5282 0%, #4299E1 100%)'
+              : 'linear-gradient(180deg, #1A202C 0%, #2D3748 100%)',
             x: useTransform(x, [-1, 1], [-5, 5]),
             y: useTransform(y, [-1, 1], [-5, 5])
           }}
         />
 
-        {/* Sun */}
+        {/* Stars */}
+        <Stars />
+
+        {/* Sun/Moon */}
         <motion.div
           className="absolute inset-0"
           style={{
@@ -46,16 +98,31 @@ const ParallaxBackground = () => {
             y: useTransform(y, [-1, 1], [-10, 10])
           }}
         >
-          <svg viewBox="0 0 800 600" className="w-full h-full opacity-30">
+          <motion.svg 
+            viewBox="0 0 800 600" 
+            className="w-full h-full"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: isDayTime ? 0.3 : 0 }}  // Reduced opacity here
+            transition={{ duration: 2 }}
+          >
             <defs>
               <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#FDB813" stopOpacity="0.7" />
+                <stop offset="0%" stopColor="#FDB813" stopOpacity="0.4" />  // Reduced opacity here
                 <stop offset="100%" stopColor="#FDB813" stopOpacity="0" />
               </radialGradient>
             </defs>
             <circle cx="400" cy="250" r="80" fill="url(#sunGlow)" />
-            <circle cx="400" cy="250" r="40" fill="#FDB813" opacity="0.8" />
-          </svg>
+            <circle cx="400" cy="250" r="40" fill="#FDB813" opacity="0.3" />  // Reduced opacity here
+          </motion.svg>
+          
+          <motion.div 
+            className="absolute top-[20%] left-1/2 transform -translate-x-1/2 text-gray-300"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isDayTime ? 0 : 0.3 }}  // Reduced opacity here
+            transition={{ duration: 2 }}
+          >
+            <Moon size={80} />
+          </motion.div>
         </motion.div>
 
         {/* Far mountains */}
@@ -69,7 +136,7 @@ const ParallaxBackground = () => {
           <svg viewBox="0 0 800 600" className="w-full h-full opacity-30">
             <path
               d="M-100 600 L200 280 L400 450 L600 300 L900 600 Z"
-              fill="#1A365D"
+              fill={isDayTime ? "#1A365D" : "#0F172A"}
             />
           </svg>
         </motion.div>
@@ -85,7 +152,7 @@ const ParallaxBackground = () => {
           <svg viewBox="0 0 800 600" className="w-full h-full opacity-30">
             <path
               d="M-200 600 L100 350 L300 450 L500 320 L700 400 L1000 600 Z"
-              fill="#2A4365"
+              fill={isDayTime ? "#2A4365" : "#1A202C"}
             />
           </svg>
         </motion.div>
@@ -101,10 +168,33 @@ const ParallaxBackground = () => {
           <svg viewBox="0 0 800 600" className="w-full h-full opacity-30">
             <path
               d="M-300 600 L0 380 L200 480 L400 350 L600 450 L1100 600 Z"
-              fill="#2C5282"
+              fill={isDayTime ? "#2C5282" : "#2D3748"}
             />
           </svg>
         </motion.div>
+
+        {/* Animated shooting stars during night */}
+        {!isDayTime && (
+          <motion.div
+            className="absolute w-4 h-0.5 bg-white"
+            style={{
+              left: '-10%',
+              top: '20%',
+              rotate: -45,
+              boxShadow: '0 0 4px #fff'
+            }}
+            animate={{
+              x: ['0%', '120%'],
+              y: ['0%', '120%'],
+              opacity: [0, 1, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatDelay: Math.random() * 10
+            }}
+          />
+        )}
 
         {/* Clouds */}
         {[...Array(5)].map((_, i) => (
