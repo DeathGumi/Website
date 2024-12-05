@@ -82,7 +82,7 @@ const NameAnimation = () => {
     <div className="relative flex justify-center items-center min-h-screen overflow-hidden">
       <ParallaxBackground />
       <div className="flex flex-col items-center relative z-10">
-        <div className="flex gap-8"> 
+        <div className="flex gap-4"> 
           {/* NAM - vertical, white */}
           <div className="flex flex-col gap-4">
             {letters.slice(0, 3).map((letter, index) => (
@@ -97,7 +97,7 @@ const NameAnimation = () => {
                     fontWeight: 700,  
                     letterSpacing: '0.01em',
                     textShadow: '0 0 15px rgba(255,255,255,0.3)',
-                    fontSize: '9rem'
+                    fontSize: '8rem'
                   }}
                   className="w-32 h-32 flex items-center justify-center text-white"
                 >
@@ -121,7 +121,7 @@ const NameAnimation = () => {
                     fontWeight: 700,  
                     letterSpacing: '0.01em',
                     textShadow: '0 0 15px rgba(204,33,20,0.3)',
-                    fontSize: '9rem'
+                    fontSize: '8rem'
                   }}
                   className="w-32 h-32 flex items-center justify-center text-[#CC2114]"
                 >
