@@ -12,6 +12,8 @@ Intro Page (animation)
  - [ ] Navbar transparent comes in (Still deciding what minimalistic nav to use)
  - [ ] Deciding whether or not to add anything else
  - [x] added a paraalax background (I want to differentiate from the rest but also show my own skill and simplicity)
+    - [x] For paralax background I added a dark mode light mode (dark mode has stars)
+    - [x] Fix overflow issue looks better when close anyways
  
 About Page
 - [ ] Picture of me
@@ -19,7 +21,7 @@ About Page
 Skills:
 - [ ] Work experinces
 - [ ] My langugages skills outside of programming too
-- [ ] Some of the apps i build the teams ive lead
+- [x] Some of the apps i build the teams ive lead
 
 Education:
 CSULB
