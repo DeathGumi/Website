@@ -23,7 +23,7 @@ const ExperienceSection = () => {
         built key features using JavaScript. We created a responsive frontend with Next.js/React 
         and set up a solid backend using Node.js and PostgreSQL for real-time updates.`,
       tech: ["JavaScript", "React/Next.js", "Node.js", "PostgreSQL", "Socket.IO", "Tailwind CSS"],
-      period: "2023",
+      period: "2023 - Current",
       role: "Team Lead & Technical Product Owner",
       links: [
         { url: "https://github.com/gsdyu/Calcoy", icon: <Github className="w-5 h-5" />, text: "GitHub" },
@@ -37,7 +37,7 @@ const ExperienceSection = () => {
         reviewing food trucks in real-time. While I handled the main development, I collaborated 
         with team members to enhance various features and improve the overall user experience.`,
       tech: ["Next.js", "JavaScript", "React Leaflet", "MVC Architecture"],
-      period: "2023",
+      period: "2024",
       role: "Lead Developer",
       links: [
         { url: "https://github.com/DeathGumi/Food-Truck-Finder", icon: <Github className="w-5 h-5" />, text: "GitHub" }
