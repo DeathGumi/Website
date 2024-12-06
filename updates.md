@@ -16,7 +16,12 @@ Intro Page (animation)
     - [x] Fix overflow issue looks better when close anyways
  
 About Page
-- [ ] Picture of me
+- [x] Picture of me
+- [x] Mini description
+- [x] added animation
+- [ ] added little tags 
+
+Will do some more research on what recruiters look for an optimize it
 
 Skills:
 - [ ] Work experinces
@@ -29,6 +34,3 @@ FVHS
 
 Contact:
 
-Dec 2: 
-
-- [ ] Created the animation
