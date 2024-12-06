@@ -80,7 +80,7 @@ const NameAnimation = () => {
 
   return (
     <div className="relative flex justify-center items-center min-h-screen overflow-hidden">
-      <ParallaxBackground />
+      <ParallaxBackground titleComplete={titleComplete} />
       <div className="flex flex-col items-center relative z-10">
         <div className="flex gap-4"> 
           {/* NAM - vertical, white */}

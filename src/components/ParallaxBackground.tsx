@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Moon, Sun } from 'lucide-react';
+import { Moon } from 'lucide-react';
+import AnimatedThemeToggle from './AnimatedThemeToggle';
 
-const ParallaxBackground = () => {
+const ParallaxBackground = ({ titleComplete = false }) => {
   const [isDayTime, setIsDayTime] = useState(true);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -24,28 +25,6 @@ const ParallaxBackground = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-  // Theme toggle button component
-  const ThemeToggle = () => (
-    <motion.button
-      onClick={() => setIsDayTime(!isDayTime)}
-      className="fixed top-4 right-4 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors z-50 flex items-center gap-2"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {isDayTime ? (
-        <>
-          <Moon className="w-5 h-5 text-white" />
-          <span className="text-white text-sm">Dark Mode</span>
-        </>
-      ) : (
-        <>
-          <Sun className="w-5 h-5 text-white" />
-          <span className="text-white text-sm">Light Mode</span>
-        </>
-      )}
-    </motion.button>
-  );
 
   // Stars component
   const Stars = () => (
@@ -71,7 +50,11 @@ const ParallaxBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden">
-      <ThemeToggle />
+      <AnimatedThemeToggle 
+        show={titleComplete} 
+        isDayTime={isDayTime} 
+        onToggle={() => setIsDayTime(!isDayTime)} 
+      />
       
       {/* Container with scale to prevent edge showing */}
       <div className="absolute inset-[-10%] scale-[1.2]">
@@ -102,23 +85,23 @@ const ParallaxBackground = () => {
             viewBox="0 0 800 600" 
             className="w-full h-full"
             initial={{ opacity: 1 }}
-            animate={{ opacity: isDayTime ? 0.3 : 0 }}  // Reduced opacity here
+            animate={{ opacity: isDayTime ? 0.3 : 0 }}
             transition={{ duration: 2 }}
           >
             <defs>
               <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#FDB813" stopOpacity="0.4" />  // Reduced opacity here
+                <stop offset="0%" stopColor="#FDB813" stopOpacity="0.4" />
                 <stop offset="100%" stopColor="#FDB813" stopOpacity="0" />
               </radialGradient>
             </defs>
             <circle cx="400" cy="250" r="80" fill="url(#sunGlow)" />
-            <circle cx="400" cy="250" r="40" fill="#FDB813" opacity="0.3" />  // Reduced opacity here
+            <circle cx="400" cy="250" r="40" fill="#FDB813" opacity="0.3" />
           </motion.svg>
           
           <motion.div 
             className="absolute top-[20%] left-1/2 transform -translate-x-1/2 text-gray-300"
             initial={{ opacity: 0 }}
-            animate={{ opacity: isDayTime ? 0 : 0.3 }}  // Reduced opacity here
+            animate={{ opacity: isDayTime ? 0 : 0.3 }}
             transition={{ duration: 2 }}
           >
             <Moon size={80} />
