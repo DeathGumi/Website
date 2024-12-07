@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+'use client';
+import { useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Moon } from 'lucide-react';
-import AnimatedThemeToggle from './AnimatedThemeToggle';
+import { useTheme } from './ThemeProvider';
 
 const ParallaxBackground = ({ titleComplete = false }) => {
-  const [isDayTime, setIsDayTime] = useState(true);
+  const { isDayTime } = useTheme();  
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -50,12 +51,6 @@ const ParallaxBackground = ({ titleComplete = false }) => {
 
   return (
     <div className="fixed inset-0 overflow-hidden">
-      <AnimatedThemeToggle 
-        show={titleComplete} 
-        isDayTime={isDayTime} 
-        onToggle={() => setIsDayTime(!isDayTime)} 
-      />
-      
       {/* Container with scale to prevent edge showing */}
       <div className="absolute inset-[-10%] scale-[1.2]">
         {/* Sky gradient background */}
