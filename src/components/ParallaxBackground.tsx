@@ -1,33 +1,39 @@
 'use client';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Moon } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
+import { debounce } from 'lodash';
 
 const ParallaxBackground = ({ titleComplete = false }) => {
   const { isDayTime } = useTheme();  
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springConfig = { damping: 25, stiffness: 150 };
+  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback(
+    debounce((e: MouseEvent) => {
       const { clientX, clientY } = e;
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
       
       mouseX.set((clientX - centerX) / centerX);
       mouseY.set((clientY - centerY) / centerY);
-    };
+    }, 5),
+    []
+  );
 
+  useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      handleMouseMove.cancel();
+    };
+  }, [handleMouseMove]);
 
-  // Stars component
   const Stars = () => (
     <motion.div 
       className="absolute inset-0"
@@ -35,13 +41,15 @@ const ParallaxBackground = ({ titleComplete = false }) => {
       animate={{ opacity: isDayTime ? 0 : 0.8 }}
       transition={{ duration: 2 }}
     >
-      {[...Array(50)].map((_, i) => (
+      {Array.from({ length: 50 }).map((_, i) => (
         <div
           key={i}
           className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 60}%`,
+            transform: 'translate3d(0,0,0)',
+            willChange: 'transform',
             animationDelay: `${Math.random() * 2}s`,
           }}
         />
@@ -51,9 +59,7 @@ const ParallaxBackground = ({ titleComplete = false }) => {
 
   return (
     <div className="fixed inset-0 overflow-hidden">
-      {/* Container with scale to prevent edge showing */}
       <div className="absolute inset-[-10%] scale-[1.2]">
-        {/* Sky gradient background */}
         <motion.div
           className="absolute inset-0 transition-colors duration-1000"
           style={{
@@ -61,19 +67,19 @@ const ParallaxBackground = ({ titleComplete = false }) => {
               ? 'linear-gradient(180deg, #2C5282 0%, #4299E1 100%)'
               : 'linear-gradient(180deg, #1A202C 0%, #2D3748 100%)',
             x: useTransform(x, [-1, 1], [-5, 5]),
-            y: useTransform(y, [-1, 1], [-5, 5])
+            y: useTransform(y, [-1, 1], [-5, 5]),
+            willChange: 'transform'
           }}
         />
 
-        {/* Stars */}
         <Stars />
 
-        {/* Sun/Moon */}
         <motion.div
           className="absolute inset-0"
           style={{
             x: useTransform(x, [-1, 1], [-10, 10]),
-            y: useTransform(y, [-1, 1], [-10, 10])
+            y: useTransform(y, [-1, 1], [-10, 10]),
+            willChange: 'transform'
           }}
         >
           <motion.svg 
@@ -103,12 +109,12 @@ const ParallaxBackground = ({ titleComplete = false }) => {
           </motion.div>
         </motion.div>
 
-        {/* Far mountains */}
         <motion.div
           className="absolute inset-0"
           style={{
             x: useTransform(x, [-1, 1], [-20, 20]),
-            y: useTransform(y, [-1, 1], [-5, 5])
+            y: useTransform(y, [-1, 1], [-5, 5]),
+            willChange: 'transform'
           }}
         >
           <svg viewBox="0 0 800 600" className="w-full h-full opacity-30">
@@ -119,12 +125,12 @@ const ParallaxBackground = ({ titleComplete = false }) => {
           </svg>
         </motion.div>
 
-        {/* Mid mountains */}
         <motion.div
           className="absolute inset-0"
           style={{
             x: useTransform(x, [-1, 1], [-35, 35]),
-            y: useTransform(y, [-1, 1], [-10, 10])
+            y: useTransform(y, [-1, 1], [-10, 10]),
+            willChange: 'transform'
           }}
         >
           <svg viewBox="0 0 800 600" className="w-full h-full opacity-30">
@@ -135,12 +141,12 @@ const ParallaxBackground = ({ titleComplete = false }) => {
           </svg>
         </motion.div>
 
-        {/* Close mountains */}
         <motion.div
           className="absolute inset-0"
           style={{
             x: useTransform(x, [-1, 1], [-50, 50]),
-            y: useTransform(y, [-1, 1], [-15, 15])
+            y: useTransform(y, [-1, 1], [-15, 15]),
+            willChange: 'transform'
           }}
         >
           <svg viewBox="0 0 800 600" className="w-full h-full opacity-30">
@@ -151,7 +157,6 @@ const ParallaxBackground = ({ titleComplete = false }) => {
           </svg>
         </motion.div>
 
-        {/* Animated shooting stars during night */}
         {!isDayTime && (
           <motion.div
             className="absolute w-4 h-0.5 bg-white"
@@ -159,7 +164,8 @@ const ParallaxBackground = ({ titleComplete = false }) => {
               left: '-10%',
               top: '20%',
               rotate: -45,
-              boxShadow: '0 0 4px #fff'
+              boxShadow: '0 0 4px #fff',
+              willChange: 'transform'
             }}
             animate={{
               x: ['0%', '120%'],
@@ -174,14 +180,14 @@ const ParallaxBackground = ({ titleComplete = false }) => {
           />
         )}
 
-        {/* Clouds */}
-        {[...Array(5)].map((_, i) => (
+        {Array.from({ length: 5 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute inset-0"
             style={{
               x: useTransform(x, [-1, 1], [-40 - i * 10, 40 + i * 10]),
-              y: useTransform(y, [-1, 1], [-10 - i * 2, 10 + i * 2])
+              y: useTransform(y, [-1, 1], [-10 - i * 2, 10 + i * 2]),
+              willChange: 'transform'
             }}
           >
             <svg viewBox="0 0 800 600" className="w-full h-full opacity-10">
