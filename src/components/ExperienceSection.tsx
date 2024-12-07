@@ -54,7 +54,7 @@ const ExperienceSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="mb-24 text-center mt-64"
+            className="mb-24 text-center mt-20"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
