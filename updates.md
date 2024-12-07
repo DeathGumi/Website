@@ -19,11 +19,13 @@ About Page
 - [x] Picture of me
 - [x] Mini description
 - [x] added animation
-- [ ] added little tags 
+- [x] added little tags 
+- [x] added pictures of my dog(may need to optimize cause pages are loading ) < > Left and right naviagtion 
 
 Will do some more research on what recruiters look for an optimize it
 
 Skills:
+- [x] reduced spacing between the experience page and the about page 
 - [ ] Work experinces
 - [ ] My langugages skills outside of programming too
 - [x] Some of the apps i build the teams ive lead
@@ -34,3 +36,5 @@ FVHS
 
 Contact:
 
+- [x] Optimized the parrlax may need to optize future things
+- [x] Fixed issue where u cant change darkmode lightmode anywhere else
