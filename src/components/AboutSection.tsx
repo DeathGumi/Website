@@ -1,8 +1,17 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const AboutSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const images = [
+    { src: "nam.jpg", alt: "Nam Ton" },
+    { src: "dog.jpg", alt: "My Husky" },
+    { src: "dog.png", alt: "Husky2.0" },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -66,6 +75,14 @@ const AboutSection = () => {
     }
   };
 
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
   return (
     <motion.div 
       className="relative flex justify-center items-center min-h-screen overflow-hidden py-20"
@@ -92,7 +109,6 @@ const AboutSection = () => {
             About Me
           </h1>
           
-          {/* Decorative line */}
           <motion.div
             className="h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent w-32 mx-auto"
             variants={decorativeLineVariants}
@@ -101,18 +117,41 @@ const AboutSection = () => {
         </motion.div>
 
         <div className="flex flex-col md:flex-row items-center gap-16">
-          {/* Image with 3D-like animation */}
+          {/* Image Carousel */}
           <motion.div
-            className="w-full md:w-1/2 perspective-1000"
+            className="w-full md:w-1/2 perspective-1000 relative group"
             variants={imageVariants}
           >
             <div className="relative aspect-square rounded-2xl overflow-hidden bg-blue-900/30 backdrop-blur-sm border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
               <img 
-                src="nam.jpg" 
-                alt="Nam Ton" 
+                src={images[currentImageIndex].src}
+                alt={images[currentImageIndex].alt}
                 className="w-full h-full object-cover"
               />
+              
+              {/* Navigation Arrows */}
+              <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button
+                  onClick={prevImage}
+                  className="p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                  aria-label="Next image"
+                >
+                  <ChevronRight size={24} />
+                </button>
+              </div>
+              
+              {/* Image Counter */}
+              <div className="absolute bottom-4 right-4 bg-black/50 px-3 py-1 rounded-full text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                {currentImageIndex + 1} / {images.length}
+              </div>
             </div>
           </motion.div>
 
@@ -125,7 +164,6 @@ const AboutSection = () => {
               Hi, I'm Nam! These days, you'll find me either deep in code, walking with my dog to clear my mind, or exploring new food spots around town. When I'm not building apps, I'm usually playing sports with friends or catching up on my favorite manga series.
             </p>
             
-            {/* Skills/Interests tags with stagger animation */}
             <motion.div 
               className="flex flex-wrap gap-3"
               variants={containerVariants}
