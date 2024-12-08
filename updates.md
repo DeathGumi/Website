@@ -9,8 +9,7 @@ Intro Page (animation)
  - [x] animation comes in goes throguh all the letters and stuff from others and land on Nam (Nam first Ton after )
  - [x] Scroll down animation come in  floating up and down signifying to scroll down
  - [x] decided to add the slidint title animation (replaced with a cleaner animation and more professional
- - [ ] Navbar transparent comes in (Still deciding what minimalistic nav to use)
- - [ ] Deciding whether or not to add anything else
+ - [x] Navbar transparent comes in (Still deciding what minimalistic nav to use)
  - [x] added a paraalax background (I want to differentiate from the rest but also show my own skill and simplicity)
     - [x] For paralax background I added a dark mode light mode (dark mode has stars)
     - [x] Fix overflow issue looks better when close anyways
@@ -38,3 +37,9 @@ Contact:
 
 - [x] Optimized the parrlax may need to optize future things
 - [x] Fixed issue where u cant change darkmode lightmode anywhere else
+
+- [ ] Need to add the proper sections
+- [ ] need to add aniamtion nav fade in after
+- [ ] Need to add the dark mode button fade in after
+- [ ] will see what eelse to add
+- [ ] contact page
