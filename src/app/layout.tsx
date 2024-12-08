@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ThemeProvider from '@/components/ThemeProvider';
+import Nav from '@/components/Nav';  
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,8 +18,8 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   icons: {
     icon: [
-      { url: '/logo.svg', type: 'image/svg+xml' }, // SVG
-      { url: '/logo.png', type: 'image/png' }  // PNG fallback
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/logo.png', type: 'image/png' }
     ],
   }
 }
@@ -34,7 +35,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          {children}
+          <Nav />  
+          <main className="pl-64"> 
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
