@@ -9,7 +9,7 @@ const AboutSection = () => {
   const images = [
     { src: "nam.jpg", alt: "Nam Ton" },
     { src: "dog.jpg", alt: "My Husky" },
-    { src: "dog.png", alt: "Husky2.0" },
+    { src: "dog1.jpg", alt: "Husky2.0" },
   ];
 
   const containerVariants = {
