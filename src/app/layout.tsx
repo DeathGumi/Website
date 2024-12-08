@@ -36,7 +36,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Nav />  
-          <main className="pl-64"> 
+          <main>
             {children}
           </main>
         </ThemeProvider>
