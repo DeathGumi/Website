@@ -1,17 +1,17 @@
 'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from './ThemeProvider';
 
 const MinimalNav = () => {
-  const [activeLink, setActiveLink] = useState('home');
+  const [activeLink, setActiveLink] = useState('about');
+  const { isDayTime } = useTheme();
 
   const links = [
-    { text: 'Nam.', href: '/', id: 'logo', isLogo: true },
-    { text: 'Home', href: '#home', id: 'home' },
+    { text: '尊 室', href: '/', id: 'logo', isLogo: true },
     { text: 'About', href: '#about', id: 'about' },
-    { text: 'Projects', href: '#projects', id: 'projects' },
     { text: 'Experience', href: '#experience', id: 'experience' },
-    { text: 'Contact', href: '#contact', id: 'contact' }
+    { text: 'Contact', href: '#contact', id: 'contact' } // Add later when creating contact page
   ];
 
   return (
@@ -33,7 +33,7 @@ const MinimalNav = () => {
               href={link.href}
               onClick={() => !link.isLogo && setActiveLink(link.id)}
               className={`block transition-colors duration-300
-                ${link.isLogo ? 'text-white mb-16 text-2xl font-medium tracking-wide' : 'text-xl tracking-wide'}
+                ${link.isLogo ? 'text-[#CC2114] mb-16 text-2xl font-medium tracking-wide' : 'text-xl tracking-wide'}
                 ${activeLink === link.id ? 'text-white' : 'text-gray-500 hover:text-gray-300'}
                 font-light`}
               style={{ fontFamily: 'Geist' }}
