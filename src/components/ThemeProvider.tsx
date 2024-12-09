@@ -26,55 +26,67 @@ interface ThemeProviderProps {
 // Theme provider component with typed props
 export default function ThemeProvider({ children }: ThemeProviderProps) {
   const [isDayTime, setIsDayTime] = useState(true);
+  const [show, setShow] = useState(false);
   
   const toggleTheme = () => setIsDayTime(prev => !prev);
+
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShow(true);
+    }, 3000); 
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ isDayTime, toggleTheme }}>
       {children}
       <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{
-            duration: 0.6,
-            ease: [0.215, 0.610, 0.355, 1.000]
-          }}
-          className="fixed top-0 right-0 p-4 z-50"
-        >
-          <motion.button
-            onClick={toggleTheme}
-            className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors flex items-center gap-2 group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.215, 0.610, 0.355, 1.000]
+            }}
+            className="fixed top-0 right-0 p-4 z-50"
           >
-            <motion.div
-              initial={false}
-              animate={{ rotate: isDayTime ? 0 : 180 }}
-              transition={{ duration: 0.6 }}
-              className="relative w-5 h-5"
+            <motion.button
+              onClick={toggleTheme}
+              className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors flex items-center gap-2 group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <motion.div
-                animate={{ opacity: isDayTime ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0"
+                initial={false}
+                animate={{ rotate: isDayTime ? 0 : 180 }}
+                transition={{ duration: 0.6 }}
+                className="relative w-5 h-5"
               >
-                <Moon className="w-5 h-5 text-white" />
+                <motion.div
+                  animate={{ opacity: isDayTime ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0"
+                >
+                  <Moon className="w-5 h-5 text-white" />
+                </motion.div>
+                <motion.div
+                  animate={{ opacity: isDayTime ? 0 : 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0"
+                >
+                  <Sun className="w-5 h-5 text-white" />
+                </motion.div>
               </motion.div>
-              <motion.div
-                animate={{ opacity: isDayTime ? 0 : 1 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0"
-              >
-                <Sun className="w-5 h-5 text-white" />
-              </motion.div>
-            </motion.div>
-            <span className="text-white text-sm opacity-60 group-hover:opacity-100 transition-opacity">
-              {isDayTime ? 'Dark Mode' : 'Light Mode'}
-            </span>
-          </motion.button>
-        </motion.div>
+              <span className="text-white text-sm opacity-60 group-hover:opacity-100 transition-opacity">
+                {isDayTime ? 'Dark Mode' : 'Light Mode'}
+              </span>
+            </motion.button>
+          </motion.div>
+        )}
       </AnimatePresence>
     </ThemeContext.Provider>
   );
