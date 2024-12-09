@@ -11,7 +11,7 @@ type ThemeContextType = {
 
 // Create theme context with the type
 const ThemeContext = createContext<ThemeContextType>({
-  isDayTime: true,
+  isDayTime: false, 
   toggleTheme: () => {},
 });
 
@@ -25,7 +25,7 @@ interface ThemeProviderProps {
 
 // Theme provider component with typed props
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-  const [isDayTime, setIsDayTime] = useState(true);
+  const [isDayTime, setIsDayTime] = useState(false); 
   const [show, setShow] = useState(false);
   
   const toggleTheme = () => setIsDayTime(prev => !prev);
