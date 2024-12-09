@@ -22,6 +22,44 @@ const MinimalNav = () => {
     return () => clearTimeout(timer);
   }, []);
 
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setActiveLink(id);
+    }
+  };
+
+  React.useEffect(() => {
+    const handleScrollSpy = () => {
+      const sections = links.slice(1).map(link => 
+        document.getElementById(link.id)
+      );
+      
+      const scrollPosition = window.scrollY + 100;
+
+      sections.forEach((section) => {
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          
+          if (scrollPosition >= sectionTop && 
+              scrollPosition < sectionTop + sectionHeight) {
+            setActiveLink(section.id);
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScrollSpy);
+    return () => window.removeEventListener('scroll', handleScrollSpy);
+  }, []);
+
   const getTextColorClasses = (isActive: boolean) => {
     if (isDayTime) {
       return isActive ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800';
@@ -46,6 +84,10 @@ const MinimalNav = () => {
             <motion.div className="relative">
               <a
                 href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="block text-3xl font-medium tracking-wider text-[#CC2114] transition-colors duration-300 hover:opacity-80"
                 style={{ 
                   fontFamily: 'Geist',
@@ -74,7 +116,7 @@ const MinimalNav = () => {
                 >
                   <a
                     href={link.href}
-                    onClick={() => setActiveLink(link.id)}
+                    onClick={(e) => handleScroll(e, link.id)}
                     className={`block transition-colors duration-300 relative group
                       ${getTextColorClasses(activeLink === link.id)}
                       font-light text-3xl tracking-wide`}

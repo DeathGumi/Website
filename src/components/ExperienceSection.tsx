@@ -46,7 +46,10 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <div className="relative flex justify-center items-center min-h-screen overflow-hidden">
+    <div 
+      id="experience"
+      className="relative flex justify-center items-center min-h-screen overflow-hidden"
+    >
       <div className="flex flex-col items-center relative z-10 max-w-4xl mx-auto px-8">
         {/* Title animation */}
         <AnimatePresence mode="wait">

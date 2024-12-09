@@ -85,6 +85,7 @@ const AboutSection = () => {
 
   return (
     <motion.div 
+      id="about"
       className="relative flex justify-center items-center min-h-screen overflow-hidden py-20"
       initial="hidden"
       whileInView="visible"
