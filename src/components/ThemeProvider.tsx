@@ -30,7 +30,6 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
   
   const toggleTheme = () => setIsDayTime(prev => !prev);
 
-
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setShow(true);
@@ -56,7 +55,10 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
           >
             <motion.button
               onClick={toggleTheme}
-              className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors flex items-center gap-2 group"
+              className={`p-3 rounded-full backdrop-blur-sm border transition-colors flex items-center gap-2 group
+                ${isDayTime 
+                  ? 'bg-gray-800/90 border-gray-700 hover:bg-gray-800/95' 
+                  : 'bg-white/10 border-white/20 hover:bg-white/20'}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -78,7 +80,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0"
                 >
-                  <Sun className="w-5 h-5 text-white" />
+                  <Sun className="w-5 h-5 text-yellow-400" />
                 </motion.div>
               </motion.div>
               <span className="text-white text-sm opacity-60 group-hover:opacity-100 transition-opacity">

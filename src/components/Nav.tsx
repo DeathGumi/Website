@@ -15,13 +15,19 @@ const MinimalNav = () => {
     { text: 'Contact', href: '#contact', id: 'contact' }
   ];
 
-
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setShow(true);
     }, 3000); 
     return () => clearTimeout(timer);
   }, []);
+
+  const getTextColorClasses = (isActive: boolean) => {
+    if (isDayTime) {
+      return isActive ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800';
+    }
+    return isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200';
+  };
 
   return (
     <AnimatePresence>
@@ -70,7 +76,7 @@ const MinimalNav = () => {
                     href={link.href}
                     onClick={() => setActiveLink(link.id)}
                     className={`block transition-colors duration-300 relative group
-                      ${activeLink === link.id ? 'text-white' : 'text-gray-500 hover:text-gray-300'}
+                      ${getTextColorClasses(activeLink === link.id)}
                       font-light text-3xl tracking-wide`}
                     style={{ 
                       fontFamily: 'Geist',
