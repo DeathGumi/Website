@@ -38,8 +38,11 @@ Contact:
 - [x] Optimized the parrlax may need to optize future things
 - [x] Fixed issue where u cant change darkmode lightmode anywhere else
 
-- [ ] Need to add the proper sections
-- [ ] need to add aniamtion nav fade in after
-- [ ] Need to add the dark mode button fade in after
+- [x] Need to add the proper sections
+- [x] need to add aniamtion nav fade in after
+- [x] Need to add the dark mode button fade in after
+- [x] made dark mode default since it looks better
+- [x] added nicer scrolling just scrolls to section 
+    - [ ] make it so the animation shows when u get to that section not reloaded 
 - [ ] will see what eelse to add
 - [ ] contact page
