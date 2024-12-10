@@ -45,4 +45,7 @@ Contact:
 - [x] added nicer scrolling just scrolls to section 
     - [ ] make it so the animation shows when u get to that section not reloaded 
 - [ ] will see what eelse to add
-- [ ] contact page
+- [x] contact page
+- [x] fixed for phone works well
+- [x] added another koda image LOL
+- [x] made image carousel looks cleaner 
