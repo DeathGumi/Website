@@ -75,12 +75,49 @@ const AboutSection = () => {
     }
   };
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
-  };
+  const calculateImageStyle = (index: number) => {
+    const position = index - currentImageIndex;
+    
+    const baseStyle = {
+      position: 'absolute' as const,
+      transition: 'all 0.5s ease',
+      width: '280px',
+      height: '400px',
+    };
 
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    if (position === 0) {
+      return {
+        ...baseStyle,
+        left: '50%',
+        transform: 'translateX(-50%) scale(1)',
+        zIndex: 3,
+        opacity: 1,
+      };
+    } else if (position === 1 || position === -images.length + 1) {
+      return {
+        ...baseStyle,
+        left: '65%',
+        transform: 'translateX(-50%) scale(0.9) rotateY(-30deg)',
+        zIndex: 2,
+        opacity: 0.6,
+      };
+    } else if (position === -1 || position === images.length - 1) {
+      return {
+        ...baseStyle,
+        left: '35%',
+        transform: 'translateX(-50%) scale(0.9) rotateY(30deg)',
+        zIndex: 2,
+        opacity: 0.6,
+      };
+    } else {
+      return {
+        ...baseStyle,
+        left: position < 0 ? '20%' : '80%',
+        transform: `translateX(-50%) scale(0.8) rotateY(${position < 0 ? 45 : -45}deg)`,
+        zIndex: 1,
+        opacity: 0.3,
+      };
+    }
   };
 
   return (
@@ -120,38 +157,53 @@ const AboutSection = () => {
         <div className="flex flex-col md:flex-row items-center gap-16">
           {/* Image Carousel */}
           <motion.div
-            className="w-full md:w-1/2 perspective-1000 relative group"
+            className="w-full md:w-1/2 h-[400px] relative group perspective-1000"
             variants={imageVariants}
           >
-            <div className="relative aspect-square rounded-2xl overflow-hidden bg-blue-900/30 backdrop-blur-sm border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-              <img 
-                src={images[currentImageIndex].src}
-                alt={images[currentImageIndex].alt}
-                className="w-full h-full object-cover"
-              />
-              
-              {/* Navigation Arrows */}
-              <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="relative h-full flex items-center justify-center">
+              {/* Image Stack */}
+              <div className="relative w-full h-full">
+                {images.map((image, index) => (
+                  <motion.div
+                    key={image.src}
+                    className="absolute top-0 rounded-2xl overflow-hidden bg-blue-900/30 backdrop-blur-sm border border-white/10 shadow-2xl transition-all duration-500"
+                    style={calculateImageStyle(index)}
+                    animate={{
+                      ...calculateImageStyle(index),
+                      transition: { duration: 0.5 }
+                    }}
+                  >
+                    <div className="relative w-full h-full">
+                      <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <img 
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Navigation Controls */}
+              <div className="absolute inset-x-0 bottom-8 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                 <button
-                  onClick={prevImage}
+                  onClick={() => setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)}
                   className="p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
                   aria-label="Previous image"
                 >
                   <ChevronLeft size={24} />
                 </button>
+                <div className="bg-black/50 px-3 py-1 rounded-full text-white text-sm">
+                  {currentImageIndex + 1} / {images.length}
+                </div>
                 <button
-                  onClick={nextImage}
+                  onClick={() => setCurrentImageIndex((prev) => (prev + 1) % images.length)}
                   className="p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
                   aria-label="Next image"
                 >
                   <ChevronRight size={24} />
                 </button>
-              </div>
-              
-              {/* Image Counter */}
-              <div className="absolute bottom-4 right-4 bg-black/50 px-3 py-1 rounded-full text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                {currentImageIndex + 1} / {images.length}
               </div>
             </div>
           </motion.div>
