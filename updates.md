@@ -49,3 +49,5 @@ Contact:
 - [x] fixed for phone works well
 - [x] added another koda image LOL
 - [x] made image carousel looks cleaner 
+- [ ] Revamp the skills or whatever page 
+    - [ ] instead of current long boxes can just a have a picture that links to it and like a littl explanation wherever cause it will look cleaner I don't like current design will work on whenver i get chance
