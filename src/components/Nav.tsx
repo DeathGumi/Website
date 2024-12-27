@@ -12,7 +12,7 @@ interface Link {
 }
 
 const MinimalNav = () => {
-  const [activeLink, setActiveLink] = useState('about');
+  const [activeLink, setActiveLink] = useState('');  
   const [show, setShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { isDayTime } = useTheme();
@@ -31,37 +31,44 @@ const MinimalNav = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Updated scroll spy to be less jumpy
   useEffect(() => {
     const handleScrollSpy = () => {
-      if (document.activeElement?.tagName === 'A') return; // Don't update during click navigation
+      if (document.activeElement?.tagName === 'A') return;
 
       const sections = links.slice(1).map(link => 
         document.getElementById(link.id)
       );
       
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      
+      if (scrollPosition < viewportHeight * 0.3) {
+        setActiveLink('');
+        return;
+      }
 
+      let currentSection = '';
       sections.forEach((section) => {
         if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
+          const sectionTop = section.offsetTop - 100; // Offset for better detection
+          const sectionBottom = sectionTop + section.clientHeight;
           
-          if (scrollPosition >= sectionTop && 
-              scrollPosition < sectionTop + sectionHeight) {
-            setActiveLink(section.id);
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentSection = section.id;
           }
         }
       });
+      
+      setActiveLink(currentSection);
     };
 
     window.addEventListener('scroll', handleScrollSpy);
+    handleScrollSpy();
     return () => window.removeEventListener('scroll', handleScrollSpy);
   }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string): void => {
     e.preventDefault();
-    // Set active state immediately
     setActiveLink(id);
     setIsOpen(false);
 
@@ -76,7 +83,7 @@ const MinimalNav = () => {
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault();
-    setActiveLink('logo');
+    setActiveLink('');  
     setIsOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
