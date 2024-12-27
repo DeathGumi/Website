@@ -1,162 +1,168 @@
 'use client';
+
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Users, Code, Globe, Briefcase, Github, ExternalLink } from 'lucide-react';
+import { Users, Code, Briefcase, Github, ExternalLink } from 'lucide-react';
 
 const ExperienceSection = () => {
   const experiences = [
     {
-      icon: <Briefcase className="w-8 h-8" />,
-      title: "Customer Service & Kitchen Leadership",
-      description: `At Fountain Bowl, I jumped between customer service and kitchen operations. 
-        Worked directly with vendors and helped coordinate between different teams to keep 
-        everything running smooth. Got to learn a lot about working with different types of 
-        people and taking charge when needed.`,
+      icon: <Briefcase className="w-6 h-6" />,
+      title: "Kitchen Leadership",
+      company: "Fountain Bowl",
+      description: "Led kitchen operations & customer service, coordinating teams and vendors.",
       period: "2021 - 2022",
-      highlights: ["Customer Service", "Kitchen Operations", "Team Coordination"]
+      skills: ["Customer Service", "Operations", "Team Leadership"]
     },
     {
-      icon: <Users className="w-8 h-8" />,
-      title: "Project Leadership - Calcoy",
-      description: `Led a team of six developers to build Calcoy, a modern calendar app powered 
-        by AI. As team lead and technical product owner, I designed the core architecture and 
-        built key features using JavaScript. We created a responsive frontend with Next.js/React 
-        and set up a solid backend using Node.js and PostgreSQL for real-time updates.`,
-      tech: ["JavaScript", "React/Next.js", "Node.js", "PostgreSQL", "Socket.IO", "Tailwind CSS"],
-      period: "2023 - Current",
-      role: "Team Lead & Technical Product Owner",
+      icon: <Users className="w-6 h-6" />,
+      title: "Project Lead",
+      company: "Calcoy",
+      description: "Led development of AI-powered calendar app. Architected core features using Next.js/React.",
+      tech: ["JavaScript", "React", "Node.js", "PostgreSQL"],
+      period: "2024 - Current",
       links: [
-        { url: "https://github.com/gsdyu/Calcoy", icon: <Github className="w-5 h-5" />, text: "GitHub" },
-        { url: "https://www.calcoy.com/", icon: <ExternalLink className="w-5 h-5" />, text: "CalCoy.com" }
+        { url: "https://github.com/gsdyu/Calcoy", icon: <Github className="w-4 h-4" /> },
+        { url: "https://www.calcoy.com/", icon: <ExternalLink className="w-4 h-4" /> }
       ]
     },
     {
-      icon: <Code className="w-8 h-8" />,
-      title: "Lead Developer - Food Truck Finder",
-      description: `Developed the core features of an interactive map-based app for finding and 
-        reviewing food trucks in real-time. While I handled the main development, I collaborated 
-        with team members to enhance various features and improve the overall user experience.`,
-      tech: ["Next.js", "JavaScript", "React Leaflet", "MVC Architecture"],
+      icon: <Code className="w-6 h-6" />,
+      title: "Lead Developer",
+      company: "Food Truck Finder",
+      description: "Built real-time food truck mapping app with interactive features.",
+      tech: ["Next.js", "React Leaflet", "MVC"],
       period: "2024",
-      role: "Lead Developer",
       links: [
-        { url: "https://github.com/DeathGumi/Food-Truck-Finder", icon: <Github className="w-5 h-5" />, text: "GitHub" }
+        { url: "https://github.com/DeathGumi/Food-Truck-Finder", icon: <Github className="w-4 h-4" /> }
       ]
     }
   ];
 
   return (
-    <div 
-      id="experience"
-      className="relative flex justify-center items-center min-h-screen overflow-hidden"
-    >
-      <div className="flex flex-col items-center relative z-10 max-w-4xl mx-auto px-8">
-        {/* Title animation */}
-        <AnimatePresence mode="wait">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="mb-24 text-center mt-20"
+    <section id="experience" className="py-20 px-4">
+      <div className="max-w-3xl mx-auto">
+        <div className="mb-12 text-center">
+          <h2 
+            className="text-6xl mb-4 opacity-0 animate-fade-in"
+            style={{
+              fontFamily: 'Optima, Candara, sans-serif',
+              fontWeight: 700,
+              letterSpacing: '0.01em',
+              textShadow: '0 0 15px rgba(255,255,255,0.3)'
+            }}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-6xl font-bold mb-4"
-              style={{
-                fontFamily: 'Optima, Candara, sans-serif',
-                fontWeight: 700,
-                letterSpacing: '0.01em',
-                textShadow: '0 0 15px rgba(255,255,255,0.3)'
-              }}
-            >
-              Experience
-            </motion.div>
-            
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.3,
-                ease: [0.215, 0.610, 0.355, 1.000]
-              }}
-              className="h-[1px] bg-gradient-to-r from-transparent via-gray-500 to-transparent mx-auto w-32"
-              style={{ transformOrigin: 'left' }}
-            />
-          </motion.div>
-        </AnimatePresence>
+            Experience
+          </h2>
+          <div 
+            className="h-[1px] bg-gradient-to-r from-transparent via-gray-500 to-transparent mx-auto w-32 opacity-0 animate-scale-x"
+          />
+        </div>
 
-        {/* Main content */}
-        <div className="space-y-16">
+        <div className="grid gap-6">
           {experiences.map((exp, index) => (
-            <motion.div
+            <div
               key={exp.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="relative"
+              className="group relative opacity-0 animate-slide-up"
+              style={{ 
+                animationDelay: `${index * 150}ms`,
+                animationFillMode: 'forwards' 
+              }}
             >
-              <div className="p-10 rounded-xl bg-blue-900/30 backdrop-blur-sm">
-                <div className="flex items-center gap-5 mb-8">
-                  {exp.icon}
-                  <div>
-                    <h3 className="text-3xl font-light mb-2" style={{ fontFamily: 'Optima, Candara, sans-serif' }}>
-                      {exp.title}
-                    </h3>
-                    <div className="text-xl text-gray-300">{exp.period}</div>
-                    {exp.role && (
-                      <div className="text-xl text-blue-300 mt-2">{exp.role}</div>
+              <div className="bg-blue-900/20 backdrop-blur-sm rounded-lg p-6 hover:bg-blue-900/30 transition-all duration-300 hover:translate-y-[-2px]">
+                <div className="flex items-start gap-4">
+                  <div className="p-2 bg-blue-800/30 rounded-lg">
+                    {exp.icon}
+                  </div>
+                  
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <h3 className="text-xl font-semibold">{exp.title}</h3>
+                        <p className="text-blue-300">{exp.company}</p>
+                      </div>
+                      <span className="text-sm text-gray-400">{exp.period}</span>
+                    </div>
+
+                    <p className="text-gray-300 mb-4">{exp.description}</p>
+
+                    {(exp.tech || exp.skills) && (
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {(exp.tech || exp.skills).map((item, i) => (
+                          <span 
+                            key={i}
+                            className="text-sm px-3 py-1 rounded-full bg-blue-800/40 text-blue-200"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {exp.links && (
+                      <div className="flex gap-3">
+                        {exp.links.map((link, i) => (
+                          <a
+                            key={i}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-blue-300 transition-colors"
+                          >
+                            {link.icon}
+                          </a>
+                        ))}
+                      </div>
                     )}
                   </div>
                 </div>
-                
-                <p className="text-gray-200 text-xl leading-relaxed mb-8">{exp.description}</p>
-                
-                {exp.highlights && (
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    {exp.highlights.map((item, i) => (
-                      <span key={i} className="px-5 py-2 rounded-full bg-blue-800/50 text-lg">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                
-                {exp.tech && (
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    {exp.tech.map((item, i) => (
-                      <span key={i} className="px-5 py-2 rounded-full bg-blue-800/50 text-lg">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {exp.links && (
-                  <div className="flex gap-4 mt-8">
-                    {exp.links.map((link, i) => (
-                      <a
-                        key={i}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-lg text-blue-300 hover:text-blue-200 transition-colors"
-                      >
-                        {link.icon}
-                        {link.text}
-                      </a>
-                    ))}
-                  </div>
-                )}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
-    </div>
+
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+          from { 
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .animate-slide-up {
+          animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes scaleX {
+          from { 
+            opacity: 0;
+            transform: scaleX(0);
+          }
+          to {
+            opacity: 1;
+            transform: scaleX(1);
+          }
+        }
+
+        .animate-scale-x {
+          animation: scaleX 0.8s ease-out 0.3s forwards;
+          transform-origin: left;
+        }
+      `}</style>
+    </section>
   );
 };
 
