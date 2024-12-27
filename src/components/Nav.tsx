@@ -50,7 +50,7 @@ const MinimalNav = () => {
       let currentSection = '';
       sections.forEach((section) => {
         if (section) {
-          const sectionTop = section.offsetTop - 100; // Offset for better detection
+          const sectionTop = section.offsetTop - 100;
           const sectionBottom = sectionTop + section.clientHeight;
           
           if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
@@ -83,6 +83,7 @@ const MinimalNav = () => {
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault();
+    e.stopPropagation();  
     setActiveLink('');  
     setIsOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -122,13 +123,13 @@ const MinimalNav = () => {
               <motion.a
                 href="/"
                 onClick={handleLogoClick}
-                className="block text-3xl font-medium tracking-wider text-[#CC2114] transition-colors duration-300 hover:opacity-80 cursor-pointer"
+                className="block text-3xl font-medium tracking-wider text-[#CC2114] transition-colors duration-300 hover:opacity-80 cursor-pointer select-none relative z-50"
                 style={{ 
                   fontFamily: 'Geist',
                   letterSpacing: '0.05em'
                 }}
               >
-                {links[0].text}
+                尊 室
               </motion.a>
             </div>
 
@@ -145,7 +146,7 @@ const MinimalNav = () => {
                       onClick={(e) => handleScroll(e, link.id)}
                       className={`block transition-colors duration-300 relative group
                         ${getTextColorClasses(activeLink === link.id)}
-                        font-light text-3xl tracking-wide cursor-pointer`}
+                        font-light text-3xl tracking-wide cursor-pointer select-none`}
                       style={{ 
                         fontFamily: 'Geist',
                         letterSpacing: '0.05em'
@@ -185,7 +186,9 @@ const MinimalNav = () => {
                       <a
                         href={link.href}
                         onClick={link.isLogo ? handleLogoClick : (e) => handleScroll(e, link.id)}
-                        className={`block text-2xl cursor-pointer ${link.isLogo ? 'text-[#CC2114] mb-8' : 'text-white'}`}
+                        className={`block text-2xl cursor-pointer select-none ${
+                          link.isLogo ? 'text-[#CC2114] mb-8' : 'text-white'
+                        }`}
                       >
                         {link.text}
                       </a>
