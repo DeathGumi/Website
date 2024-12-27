@@ -119,7 +119,7 @@ const MinimalNav = () => {
             transition={{ duration: 0.6 }}
             className="fixed left-0 top-0 h-screen w-64 hidden lg:flex flex-col z-40"
           >
-            <div className="pt-16 px-16">
+            <div className="pt-6 px-16">
               <motion.a
                 href="/"
                 onClick={handleLogoClick}
