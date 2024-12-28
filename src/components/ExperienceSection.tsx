@@ -23,6 +23,11 @@ const ExperienceSection = () => {
       links: [
         { url: "https://github.com/gsdyu/Calcoy", icon: <Github className="w-4 h-4" /> },
         { url: "https://www.calcoy.com/", icon: <ExternalLink className="w-4 h-4" /> }
+      ],
+      images: [
+        "/1.png",
+        "/2.png",
+        "/3.png"
       ]
     },
     {
@@ -34,6 +39,9 @@ const ExperienceSection = () => {
       period: "2024",
       links: [
         { url: "https://github.com/DeathGumi/Food-Truck-Finder", icon: <Github className="w-4 h-4" /> }
+      ],
+      images: [
+
       ]
     }
   ];
@@ -53,9 +61,7 @@ const ExperienceSection = () => {
           >
             Experience
           </h2>
-          <div 
-            className="h-[1px] bg-gradient-to-r from-transparent via-gray-500 to-transparent mx-auto w-32 opacity-0 animate-scale-x"
-          />
+          <div className="h-[1px] bg-gradient-to-r from-transparent via-gray-500 to-transparent mx-auto w-32 opacity-0 animate-scale-x" />
         </div>
 
         <div className="grid gap-6">
@@ -84,6 +90,20 @@ const ExperienceSection = () => {
                     </div>
 
                     <p className="text-gray-300 mb-4">{exp.description}</p>
+
+                    {exp.images && (
+                      <div className="grid grid-cols-3 gap-2 mb-4">
+                        {exp.images.map((src, i) => (
+                          <div key={i} className="relative rounded-lg overflow-hidden bg-blue-900/30">
+                            <img
+                              src={src}
+                              alt={`${exp.company} project screenshot ${i + 1}`}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     {(exp.tech || exp.skills) && (
                       <div className="flex flex-wrap gap-2 mb-3">
