@@ -55,6 +55,9 @@ Contact:
 - [x] added clicking on name
 - [x] fixed issue where misaligned
 - [x] simplified the experince portion
+- [x] small fixes on hover
+- [x] added images
+- [x] on click iamge expands + explanation
 
 - [ ] still need to add like a skills page
 
