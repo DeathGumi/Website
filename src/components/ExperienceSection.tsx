@@ -1,10 +1,95 @@
 'use client';
 
-import React from 'react';
-import { Users, Code, Briefcase, Github, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { Users, Code, Briefcase, Github, ExternalLink, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const ExperienceSection = () => {
-  const experiences = [
+interface ImageModalProps {
+  image: string;
+  explanation: string;
+  title: string;
+  onClose: () => void;
+}
+
+const ImageModal: React.FC<ImageModalProps> = ({ image, explanation, title, onClose }) => {
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+      onClick={onClose}
+    >
+      <motion.div 
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        className="relative flex w-full max-w-7xl mx-4 h-[80vh] bg-gray-900/90 rounded-lg overflow-hidden"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Image Section */}
+        <div className="flex-1 p-4">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-contain rounded-lg"
+          />
+        </div>
+
+        {/* Explanation Section */}
+        <div className="w-96 border-l border-gray-700 p-6 overflow-y-auto">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-xl font-semibold">{title}</h3>
+            <button
+              onClick={onClose}
+              className="p-2 hover:bg-gray-800 rounded-full transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          
+          <div className="space-y-4">
+            <div className="p-4 rounded-lg bg-blue-900/20 backdrop-blur-sm">
+              <p className="text-sm text-gray-300">
+                {explanation}
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+interface Experience {
+  icon: React.ReactNode;
+  title: string;
+  company: string;
+  description: string;
+  period: string;
+  skills?: string[];
+  tech?: string[];
+  links?: {
+    url: string;
+    icon: React.ReactNode;
+  }[];
+  images?: {
+    src: string;
+    title: string;
+    explanation: string;
+  }[];
+}
+
+interface SelectedImage {
+  src: string;
+  title: string;
+  explanation: string;
+}
+
+const ExperienceSection: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(null);
+
+  const experiences: Experience[] = [
     {
       icon: <Briefcase className="w-6 h-6" />,
       title: "Kitchen Leadership",
@@ -25,9 +110,21 @@ const ExperienceSection = () => {
         { url: "https://www.calcoy.com/", icon: <ExternalLink className="w-4 h-4" /> }
       ],
       images: [
-        "/1.png",
-        "/2.png",
-        "/3.png"
+        {
+          src: "/1.png",
+          title: "Calendar Interface",
+          explanation: ""
+        },
+        {
+          src: "/2.png",
+          title: "Smart Scheduling",
+          explanation: ""
+        },
+        {
+          src: "/3.png",
+          title: "Group + Event added",
+          explanation: ""
+        }
       ]
     },
     {
@@ -40,9 +137,7 @@ const ExperienceSection = () => {
       links: [
         { url: "https://github.com/DeathGumi/Food-Truck-Finder", icon: <Github className="w-4 h-4" /> }
       ],
-      images: [
-
-      ]
+      images: []
     }
   ];
 
@@ -91,13 +186,17 @@ const ExperienceSection = () => {
 
                     <p className="text-gray-300 mb-4">{exp.description}</p>
 
-                    {exp.images && (
+                    {exp.images && exp.images.length > 0 && (
                       <div className="grid grid-cols-3 gap-2 mb-4">
-                        {exp.images.map((src, i) => (
-                          <div key={i} className="relative rounded-lg overflow-hidden bg-blue-900/30 group/image">
+                        {exp.images.map((image, i) => (
+                          <div 
+                            key={i} 
+                            className="relative rounded-lg overflow-hidden bg-blue-900/30 group/image cursor-pointer"
+                            onClick={() => setSelectedImage(image)}
+                          >
                             <img
-                              src={src}
-                              alt={`${exp.company} project screenshot ${i + 1}`}
+                              src={image.src}
+                              alt={image.title}
                               className="w-full h-full object-cover transition-transform duration-300 group-hover/image:scale-105"
                             />
                           </div>
@@ -107,7 +206,7 @@ const ExperienceSection = () => {
 
                     {(exp.tech || exp.skills) && (
                       <div className="flex flex-wrap gap-2 mb-3">
-                        {(exp.tech || exp.skills).map((item, i) => (
+                        {[...(exp.tech || []), ...(exp.skills || [])].map((item, i) => (
                           <span 
                             key={i}
                             className="text-sm px-3 py-1 rounded-full bg-blue-800/40 text-blue-200"
@@ -140,6 +239,17 @@ const ExperienceSection = () => {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <ImageModal 
+            image={selectedImage.src}
+            title={selectedImage.title}
+            explanation={selectedImage.explanation}
+            onClose={() => setSelectedImage(null)} 
+          />
+        )}
+      </AnimatePresence>
 
       <style jsx global>{`
         @keyframes fadeIn {
