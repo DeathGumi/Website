@@ -94,11 +94,11 @@ const ExperienceSection = () => {
                     {exp.images && (
                       <div className="grid grid-cols-3 gap-2 mb-4">
                         {exp.images.map((src, i) => (
-                          <div key={i} className="relative rounded-lg overflow-hidden bg-blue-900/30">
+                          <div key={i} className="relative rounded-lg overflow-hidden bg-blue-900/30 group/image">
                             <img
                               src={src}
                               alt={`${exp.company} project screenshot ${i + 1}`}
-                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover/image:scale-105"
                             />
                           </div>
                         ))}
