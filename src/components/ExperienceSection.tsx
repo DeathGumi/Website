@@ -1,17 +1,23 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Users, Code, Briefcase, Github, ExternalLink, X } from 'lucide-react';
+import { Users, Code, Briefcase, Github, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ImageModalProps {
-  image: string;
-  explanation: string;
-  title: string;
+  images: Array<{
+    src: string;
+    title: string;
+    explanation: string;
+  }>;
+  currentIndex: number;
   onClose: () => void;
+  onNavigate: (index: number) => void;
 }
 
-const ImageModal: React.FC<ImageModalProps> = ({ image, explanation, title, onClose }) => {
+const ImageModal: React.FC<ImageModalProps> = ({ images, currentIndex, onClose, onNavigate }) => {
+  const currentImage = images[currentIndex];
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -27,11 +33,36 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, explanation, title, onCl
         className="relative flex w-full max-w-7xl mx-4 h-[80vh] bg-gray-900/90 rounded-lg overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
+        {/* Navigation Buttons */}
+        {currentIndex > 0 && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onNavigate(currentIndex - 1);
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+        )}
+        
+        {currentIndex < images.length - 1 && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onNavigate(currentIndex + 1);
+            }}
+            className="absolute right-[400px] top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        )}
+
         {/* Image Section */}
         <div className="flex-1 p-4">
           <img
-            src={image}
-            alt={title}
+            src={currentImage.src}
+            alt={currentImage.title}
             className="w-full h-full object-contain rounded-lg"
           />
         </div>
@@ -39,7 +70,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, explanation, title, onCl
         {/* Explanation Section */}
         <div className="w-96 border-l border-gray-700 p-6 overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-xl font-semibold">{title}</h3>
+            <h3 className="text-xl font-semibold">{currentImage.title}</h3>
             <button
               onClick={onClose}
               className="p-2 hover:bg-gray-800 rounded-full transition-colors"
@@ -51,9 +82,29 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, explanation, title, onCl
           <div className="space-y-4">
             <div className="p-4 rounded-lg bg-blue-900/20 backdrop-blur-sm">
               <p className="text-sm text-gray-300">
-                {explanation}
+                {currentImage.explanation}
               </p>
             </div>
+          </div>
+
+          {/* Thumbnail Navigation */}
+          <div className="mt-6 grid grid-cols-4 gap-2">
+            {images.map((img, idx) => (
+              <div
+                key={idx}
+                onClick={() => onNavigate(idx)}
+                className={`
+                  cursor-pointer rounded-lg overflow-hidden border-2 transition-colors
+                  ${idx === currentIndex ? 'border-blue-500' : 'border-transparent hover:border-blue-500/50'}
+                `}
+              >
+                <img
+                  src={img.src}
+                  alt={img.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </motion.div>
@@ -80,14 +131,13 @@ interface Experience {
   }[];
 }
 
-interface SelectedImage {
-  src: string;
-  title: string;
-  explanation: string;
+interface SelectedImageInfo {
+  experienceIndex: number;
+  imageIndex: number;
 }
 
 const ExperienceSection: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(null);
+  const [selectedImage, setSelectedImage] = useState<SelectedImageInfo | null>(null);
 
   const experiences: Experience[] = [
     {
@@ -113,39 +163,39 @@ const ExperienceSection: React.FC = () => {
         {
           src: "/1.png",
           title: "Calendar Interface",
-          explanation: " This is the typical calendar interface left is naviagation, top is where to change days, right is sidebar where the minicalendar, groups, filters, and tasks list are located"
+          explanation: "This is the typical calendar interface left is naviagation, top is where to change days, right is sidebar where the minicalendar, groups, filters, and tasks list are located"
         },
         {
           src: "/2.png",
           title: "Smart Scheduling",
-          explanation: " This is an example of the ai creating an eventm you can change the date and talk with the ai to optimize your schedule + conversation history on the right side"
+          explanation: "This is an example of the ai creating an eventm you can change the date and talk with the ai to optimize your schedule + conversation history on the right side"
         },
         {
           src: "/3.png",
           title: "Group + Event added",
-          explanation: " An event from the groups/server is created + the group/server is added to the filters"
+          explanation: "An event from the groups/server is created + the group/server is added to the filters"
         },
         {
           src: "/4.png",
           title: "In server + week interface",
-          explanation: " In this interface this time we are in the actual server itself in the week option where when we navigate on the minicalendar there is a signifier for what day and week we clicked on and for the calendar itself there is a highlight for the specifc day"
+          explanation: "In this interface this time we are in the actual server itself in the week option where when we navigate on the minicalendar there is a signifier for what day and week we clicked on and for the calendar itself there is a highlight for the specifc day"
         },
         {
           src: "/5.png",
           title: "Dashboard interface + Ai Insights + Upcoming tasks",
-          explanation: " So this dashboard interface is meant to show to the user like stats over time on what percentage of tasks are finished and the goal of the app is to used these stats to learn from the user and to give recommendations and optimize the users schedule to increase their productivity and completion rate"
+          explanation: "So this dashboard interface is meant to show to the user like stats over time on what percentage of tasks are finished and the goal of the app is to used these stats to learn from the user and to give recommendations and optimize the users schedule to increase their productivity and completion rate"
         },
         {
           src: "/6.png",
-          title: " Friends ",
-          explanation: " If you ever want friends to have a community or just to keep accountibility or plan with your friend you can add friends"
+          title: "Friends",
+          explanation: "If you ever want friends to have a community or just to keep accountibility or plan with your friend you can add friends"
         },
         {
           src: "/7.png",
-          title: " Checkings friends calendar",
-          explanation: " After you have a friend added you can view and check their individual calendar so you can find a day to go out or do something or you can remind them if they are missing something"
+          title: "Checkings friends calendar",
+          explanation: "After you have a friend added you can view and check their individual calendar so you can find a day to go out or do something or you can remind them if they are missing something"
         }
-      ] 
+      ]
     },
     {
       icon: <Code className="w-6 h-6" />,
@@ -212,7 +262,7 @@ const ExperienceSection: React.FC = () => {
                           <div 
                             key={i} 
                             className="relative rounded-lg overflow-hidden bg-blue-900/30 group/image cursor-pointer"
-                            onClick={() => setSelectedImage(image)}
+                            onClick={() => setSelectedImage({ experienceIndex: index, imageIndex: i })}
                           >
                             <img
                               src={image.src}
@@ -263,10 +313,13 @@ const ExperienceSection: React.FC = () => {
       <AnimatePresence>
         {selectedImage && (
           <ImageModal 
-            image={selectedImage.src}
-            title={selectedImage.title}
-            explanation={selectedImage.explanation}
-            onClose={() => setSelectedImage(null)} 
+            images={experiences[selectedImage.experienceIndex].images || []}
+            currentIndex={selectedImage.imageIndex}
+            onClose={() => setSelectedImage(null)}
+            onNavigate={(newIndex) => setSelectedImage({
+              experienceIndex: selectedImage.experienceIndex,
+              imageIndex: newIndex
+            })}
           />
         )}
       </AnimatePresence>
