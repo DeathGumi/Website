@@ -112,18 +112,21 @@ const ImageModal: React.FC<ImageModalProps> = ({ images, currentIndex, onClose, 
   );
 };
 
+interface LinkType {
+  url: string;
+  icon: React.ReactElement;
+  label: string;
+}
+
 interface Experience {
-  icon: React.ReactNode;
+  icon: React.ReactElement;
   title: string;
   company: string;
   description: string;
   period: string;
   skills?: string[];
   tech?: string[];
-  links?: {
-    url: string;
-    icon: React.ReactNode;
-  }[];
+  links?: LinkType[];
   images?: {
     src: string;
     title: string;
@@ -150,14 +153,22 @@ const ExperienceSection: React.FC = () => {
     },
     {
       icon: <Users className="w-6 h-6" />,
-      title: "Project Lead",
+      title: "Project Lead, Lead UX/UI Designer",
       company: "Calcoy",
-      description: "Led development of AI-powered calendar app. Architected core features using Next.js/React.",
-      tech: ["JavaScript", "React", "Node.js", "PostgreSQL"],
+      description: "Led development of AI-powered calendar app. Architected core features and interface enhancements using Next.js/React.",
+      tech: ["JavaScript", "React", "Node.js", "PostgreSQL", "OAuth", "Jina Ai(Embeddings)", "Express.js", "Vercel(Webhosting)"],
       period: "2024 - Current",
       links: [
-        { url: "https://github.com/gsdyu/Calcoy", icon: <Github className="w-4 h-4" /> },
-        { url: "https://www.calcoy.com/", icon: <ExternalLink className="w-4 h-4" /> }
+        { 
+          url: "https://github.com/gsdyu/Calcoy", 
+          icon: <Github className="w-5 h-5" />,
+          label: "Github"
+        },
+        { 
+          url: "https://www.calcoy.com/", 
+          icon: <ExternalLink className="w-5 h-5" />,
+          label: "Calcoy.com"
+        }
       ],
       images: [
         {
@@ -201,11 +212,15 @@ const ExperienceSection: React.FC = () => {
       icon: <Code className="w-6 h-6" />,
       title: "Lead Developer",
       company: "Food Truck Finder",
-      description: "Built real-time food truck mapping app with interactive features.",
-      tech: ["Next.js", "React Leaflet", "MVC"],
+      description: "Built food truck mapping app with interactive features.",
+      tech: ["Next.js", "React Leaflet", "MVC-Architecture", "Javascript"],
       period: "2024",
       links: [
-        { url: "https://github.com/DeathGumi/Food-Truck-Finder", icon: <Github className="w-4 h-4" /> }
+        { 
+          url: "https://github.com/DeathGumi/Food-Truck-Finder", 
+          icon: <Github className="w-5 h-5" />,
+          label: "Github"
+        }
       ],
       images: []
     }
@@ -288,16 +303,20 @@ const ExperienceSection: React.FC = () => {
                     )}
 
                     {exp.links && (
-                      <div className="flex gap-3">
+                      <div className="flex gap-4 mt-4 pt-3 border-t border-blue-800/30">
                         {exp.links.map((link, i) => (
                           <a
                             key={i}
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-blue-300 transition-colors"
+                            className="flex items-center gap-2 px-4 py-2 bg-blue-900/30 rounded-lg 
+                              text-gray-300 hover:text-blue-300 hover:bg-blue-900/50 transition-all duration-300"
                           >
                             {link.icon}
+                            <span className="text-sm">
+                              {link.label}
+                            </span>
                           </a>
                         ))}
                       </div>
