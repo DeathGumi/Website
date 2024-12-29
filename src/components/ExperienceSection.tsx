@@ -113,19 +113,39 @@ const ExperienceSection: React.FC = () => {
         {
           src: "/1.png",
           title: "Calendar Interface",
-          explanation: ""
+          explanation: " This is the typical calendar interface left is naviagation, top is where to change days, right is sidebar where the minicalendar, groups, filters, and tasks list are located"
         },
         {
           src: "/2.png",
           title: "Smart Scheduling",
-          explanation: ""
+          explanation: " This is an example of the ai creating an eventm you can change the date and talk with the ai to optimize your schedule + conversation history on the right side"
         },
         {
           src: "/3.png",
           title: "Group + Event added",
-          explanation: ""
+          explanation: " An event from the groups/server is created + the group/server is added to the filters"
+        },
+        {
+          src: "/4.png",
+          title: "In server + week interface",
+          explanation: " In this interface this time we are in the actual server itself in the week option where when we navigate on the minicalendar there is a signifier for what day and week we clicked on and for the calendar itself there is a highlight for the specifc day"
+        },
+        {
+          src: "/5.png",
+          title: "Dashboard interface + Ai Insights + Upcoming tasks",
+          explanation: " So this dashboard interface is meant to show to the user like stats over time on what percentage of tasks are finished and the goal of the app is to used these stats to learn from the user and to give recommendations and optimize the users schedule to increase their productivity and completion rate"
+        },
+        {
+          src: "/6.png",
+          title: " Friends ",
+          explanation: " If you ever want friends to have a community or just to keep accountibility or plan with your friend you can add friends"
+        },
+        {
+          src: "/7.png",
+          title: " Checkings friends calendar",
+          explanation: " After you have a friend added you can view and check their individual calendar so you can find a day to go out or do something or you can remind them if they are missing something"
         }
-      ]
+      ] 
     },
     {
       icon: <Code className="w-6 h-6" />,
