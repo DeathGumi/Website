@@ -58,6 +58,10 @@ Contact:
 - [x] small fixes on hover
 - [x] added images
 - [x] on click iamge expands + explanation
+- [x] fixed nav
+- [x] added images + < >
+- [x] added images + more wording
+- [x] specific wording + made the link pop out more wasnt very visible before
 
 - [ ] still need to add like a skills page
 
