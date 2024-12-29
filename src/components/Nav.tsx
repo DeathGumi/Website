@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
@@ -16,6 +16,8 @@ const MinimalNav = () => {
   const [show, setShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { isDayTime } = useTheme();
+  const isScrollingRef = useRef(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const links: Link[] = [
     { text: '尊 室', href: '/', id: 'logo', isLogo: true },
@@ -31,40 +33,53 @@ const MinimalNav = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const handleScrollSpy = () => {
-      if (document.activeElement?.tagName === 'A') return;
+  const handleScrollSpy = () => {
+    if (isScrollingRef.current) return;
 
-      const sections = links.slice(1).map(link => 
-        document.getElementById(link.id)
-      );
-      
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      
-      if (scrollPosition < viewportHeight * 0.3) {
-        setActiveLink('');
-        return;
-      }
+    const sections = links.slice(1).map(link => 
+      document.getElementById(link.id)
+    );
+    
+    const scrollPosition = window.scrollY + 100; 
+    const viewportHeight = window.innerHeight;
+    
+    if (scrollPosition < viewportHeight * 0.3) {
+      setActiveLink('');
+      return;
+    }
 
-      let currentSection = '';
-      sections.forEach((section) => {
-        if (section) {
-          const sectionTop = section.offsetTop - 100;
-          const sectionBottom = sectionTop + section.clientHeight;
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            currentSection = section.id;
-          }
+    let currentSection = '';
+    sections.forEach((section) => {
+      if (section) {
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = sectionTop + section.clientHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          currentSection = section.id;
         }
-      });
-      
-      setActiveLink(currentSection);
+      }
+    });
+    
+    setActiveLink(currentSection);
+  };
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      handleScrollSpy();
     };
 
-    window.addEventListener('scroll', handleScrollSpy);
+    window.addEventListener('scroll', scrollHandler, { passive: true });
     handleScrollSpy();
-    return () => window.removeEventListener('scroll', handleScrollSpy);
+    
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string): void => {
@@ -74,10 +89,17 @@ const MinimalNav = () => {
 
     const element = document.getElementById(id);
     if (element) {
+      isScrollingRef.current = true;
+      
       element.scrollIntoView({ 
         behavior: 'smooth',
         block: 'start'
       });
+
+      setTimeout(() => {
+        isScrollingRef.current = false;
+        handleScrollSpy();
+      }, 1000); 
     }
   };
 
@@ -86,7 +108,14 @@ const MinimalNav = () => {
     e.stopPropagation();  
     setActiveLink('');  
     setIsOpen(false);
+    
+    isScrollingRef.current = true;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    setTimeout(() => {
+      isScrollingRef.current = false;
+      handleScrollSpy();
+    }, 1000);
   };
 
   const getTextColorClasses = (isActive: boolean): string => {
