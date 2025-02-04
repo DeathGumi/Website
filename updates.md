@@ -67,3 +67,7 @@ Contact:
 
 # Scroll animations switch stuff up
 https://www.vev.design/blog/scroll-animation-examples/
+
+# Feb 4th (deciding what to add)
+- [x] added analytics tracking
+- [x] added mina portfolio
