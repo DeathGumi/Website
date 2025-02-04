@@ -223,7 +223,23 @@ const ExperienceSection: React.FC = () => {
         }
       ],
       images: []
-    }
+    },
+    {
+      icon: <Code className="w-6 h-6" />,
+      title: "Designer and Developer",
+      company: "Mina Hanna Portfolio",
+      description: "Designed and Developed a portfolio",
+      tech: ["Next.js", "Typescript"],
+      period: "January 2025",
+      links: [
+        { 
+          url: "", 
+          icon: <ExternalLink className="w-5 h-5" />,
+          label: "Website"
+        }
+      ],
+      images: []
+    },
   ];
 
   return (
