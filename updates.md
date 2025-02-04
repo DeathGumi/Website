@@ -65,3 +65,5 @@ Contact:
 
 - [ ] still need to add like a skills page
 
+# Scroll animations switch stuff up
+https://www.vev.design/blog/scroll-animation-examples/
