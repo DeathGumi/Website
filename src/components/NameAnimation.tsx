@@ -28,6 +28,27 @@ const NameAnimation = () => {
   const tonLetters: string[] = ['T', 'O', 'N'];
   const namDuration: number = 1500; 
   const tonDelay: number = 1500; 
+
+  useEffect(() => {
+    const preventDefault = (e: Event) => {
+      if (!titleComplete) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    };
+    
+    document.body.style.overflow = titleComplete ? 'auto' : 'hidden';
+    
+    window.addEventListener('touchmove', preventDefault, { passive: false });
+    window.addEventListener('wheel', preventDefault, { passive: false });
+    
+    return () => {
+      document.body.style.overflow = 'auto';
+      window.removeEventListener('touchmove', preventDefault);
+      window.removeEventListener('wheel', preventDefault);
+    };
+  }, [titleComplete]);
   
   useEffect(() => {
     // Cycle interval for NAM
