@@ -233,12 +233,43 @@ const ExperienceSection: React.FC = () => {
       period: "January 2025",
       links: [
         { 
-          url: "", 
+          url: "https://web-livid-beta.vercel.app/", 
           icon: <ExternalLink className="w-5 h-5" />,
           label: "Website"
         }
       ],
-      images: []
+      images: [
+        {
+          src: "/m1.png",
+          title: "Inital Page",
+          explanation: " So this page in order to bypass it there is a fingerprint scanner on the top that you click originally this idea came cause Mina likes FPS games and I wanted to encorporate something regarding it. I was also inspired by a Valorant recap so I created like a spy/fps ui."
+        },
+        {
+          src: "/m2.png",
+          title: "Main Directory",
+          explanation: "Once you gain access from pressing the finger scanner you are led to the directory, I also added little details below like the time and like fake data analytics to not only fill the space but add some detail to make it look more friendly. The directory is simple with hover effects to show that the user is hovering over and titles that are clear and concise "
+        },
+        {
+          src: "/m3.png",
+          title: "Projects",
+          explanation: "Mina wanted something simple to displayy his projects so I let him input whatever he wanted I just designed the page for him"
+        },
+        {
+          src: "/m4.png",
+          title: "Experience",
+          explanation: "Mina just wanted to display his experience so we used the same template as the Project page"
+        },
+        {
+          src: "/m5.png",
+          title: "Contact",
+          explanation: "For this page I just wanted it to be simple with the Logos not much to say here other than the themed messaging and same template as before"
+        },
+        {
+          src: "/m6.png",
+          title: "About",
+          explanation: "This page I wanted to differentiate from the others since this one is about Mina so I wanted to separate his about from his education and coursework (Clear conscise and straight to the point)"
+        }
+      ]
     },
   ];
 
