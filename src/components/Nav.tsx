@@ -23,6 +23,7 @@ const MinimalNav = () => {
     { text: '尊 室', href: '/', id: 'logo', isLogo: true },
     { text: 'About', href: '#about', id: 'about' },
     { text: 'Experience', href: '#experience', id: 'experience' },
+    { text: 'Projects', href: '#projects', id: 'projects' },
     { text: 'Contact', href: '#contact', id: 'contact' }
   ];
 
