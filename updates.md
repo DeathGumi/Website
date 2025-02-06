@@ -71,3 +71,11 @@ https://www.vev.design/blog/scroll-animation-examples/
 # Feb 4th (deciding what to add)
 - [x] added analytics tracking
 - [x] added mina portfolio
+
+# Feb 5th
+- [x] Mina portfolio fixed
+- [x] Locked first screen
+
+# Feb 6th
+- [x] added projects separations
+- [x] added projects to nav
