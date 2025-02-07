@@ -79,3 +79,6 @@ https://www.vev.design/blog/scroll-animation-examples/
 # Feb 6th
 - [x] added projects separations
 - [x] added projects to nav
+
+# Feb 7th (short)
+- [x] Food truck details
