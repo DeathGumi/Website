@@ -203,7 +203,7 @@ const ProjectsSection: React.FC = () => {
       icon: <Code className="w-6 h-6" />,
       title: "Lead Developer",
       company: "Food Truck Finder",
-      description: "Built food truck mapping app with interactive features.",
+      description: "Built food truck mapping app with interactive features to practice project management, testing, and user design priciples",
       tech: ["Next.js", "React Leaflet", "MVC-Architecture", "Javascript"],
       period: "2024",
       links: [
@@ -213,13 +213,54 @@ const ProjectsSection: React.FC = () => {
           label: "Github"
         }
       ],
-      images: []
+      images: [
+        {
+          src: "/f1.png",
+          title: "Initial page interface",
+          explanation: "This was made to be a simple project to just put out a design of an application to track where food trucks are. (Used fake data for simplicity since there wasn't actually good data that I could find regarding food trucks near me. Left side is the food truck list, filter, and right side is the map and locations of food trucks that are currently available"
+        },
+        {
+          src: "/f2.png",
+          title: "Hover Modal",
+          explanation: "When hovering the food trucks it gives detailed information of the food truck, how busy it is, the reviews, and the description"
+        },
+        {
+          src: "/f3.png",
+          title: "Filters",
+          explanation: "Filters expanded with all the options predetermined (Price, Cuisine, Minimum Rating, Operating Status) It's preset to all but the user can click any of those choices"
+        },
+        {
+          src: "/f4.png",
+          title: "Food Truck Modal ",
+          explanation: "In this modal you can see the review in menus(I put a separate menu tab cause food review apps like yelp typically dont have a menu), you can also delete reviews and delete food truck in this modal, and also has the general info"
+        },
+        {
+          src: "/f5.png", 
+          title: "Add review",
+          explanation: "Straightforward you can add a review and an image"
+        },
+        {
+          src: "/f6.png",
+          title: "Menu",
+          explanation: "Expanded menu"
+        },
+        {
+          src: "/f7.png",
+          title: "Add FoodTruck Form",
+          explanation: "For owners they can add their foodtruck by filling out the form"
+        },
+        {
+          src: "/f8.png",
+          title: "Closed food trucks",
+          explanation: "Once a food truck is closed it will still show on the list but in the closed food truck list and not appear on the maps until it reopens"
+        }
+      ]
     },
     {
       icon: <Code className="w-6 h-6" />,
       title: "Designer and Developer",
       company: "Mina Hanna Portfolio",
-      description: "Designed and Developed a portfolio",
+      description: "Designed and Developed a portfolio for a friend to practice user interface/design",
       tech: ["Next.js", "Typescript"],
       period: "January 2025",
       links: [
