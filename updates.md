@@ -82,3 +82,7 @@ https://www.vev.design/blog/scroll-animation-examples/
 
 # Feb 7th (short)
 - [x] Food truck details
+
+# Feb 8th
+- [x] Was fixing like optimized issues regarding using milion/react scans no luck will figure out tomorrow
+- [x] Fixes image sizing similar sized to other cleanre
