@@ -37,7 +37,7 @@ const AnimatedThemeToggle = ({ show = false, isDayTime, onToggle }: AnimatedThem
         >
           <motion.button
             onClick={onToggle}
-            className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors flex items-center gap-2 group"
+            className="p-3 rounded-full bg-black/80 backdrop-blur-sm border border-white/20 hover:bg-black/90 transition-colors flex items-center gap-2 group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

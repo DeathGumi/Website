@@ -121,7 +121,7 @@ const MinimalNav = () => {
 
   const getTextColorClasses = (isActive: boolean): string => {
     if (isDayTime) {
-      return isActive ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800';
+      return isActive ? 'text-gray-900' : 'text-gray-800 hover:text-gray-900';
     }
     return isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200';
   };
