@@ -101,7 +101,7 @@ const ContactSection = () => {
               variants={itemVariants}
               className="group"
             >
-              <div className="p-8 rounded-xl bg-blue-900/30 backdrop-blur-sm border border-white/10 hover:border-white/20 hover:bg-blue-900/30 transition-all duration-300 hover:translate-y-[-2px] flex flex-col items-center gap-4 relative">
+              <div className="p-8 rounded-xl bg-blue-900/60 backdrop-blur-sm border border-white/10 hover:border-white/20 hover:bg-blue-900/70 transition-all duration-300 hover:translate-y-[-2px] flex flex-col items-center gap-4 relative">
                 <div className="p-4 rounded-full bg-blue-800/50 group-hover:bg-blue-700/50 transition-colors">
                   {link.icon}
                 </div>

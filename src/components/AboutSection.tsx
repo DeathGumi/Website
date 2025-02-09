@@ -167,7 +167,7 @@ const AboutSection = () => {
                 {images.map((image, index) => (
                   <motion.div
                     key={image.src}
-                    className="absolute top-0 rounded-2xl overflow-hidden bg-blue-900/30 backdrop-blur-sm border border-white/10 shadow-2xl transition-all duration-500"
+                    className="absolute top-0 rounded-2xl overflow-hidden bg-blue-900/60 backdrop-blur-sm border border-white/10 shadow-2xl transition-all duration-500"
                     style={calculateImageStyle(index)}
                     animate={{
                       ...calculateImageStyle(index),

@@ -52,7 +52,7 @@ const ExperienceSection: React.FC = () => {
                 animationFillMode: 'forwards' 
               }}
             >
-              <div className="bg-blue-900/20 backdrop-blur-sm rounded-lg p-6 hover:bg-blue-900/30 transition-all duration-300 hover:translate-y-[-2px]">
+              <div className="bg-blue-900/60 backdrop-blur-sm rounded-lg p-6 hover:bg-blue-900/70 transition-all duration-300 hover:translate-y-[-2px]">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-blue-800/30 rounded-lg">
                     {exp.icon}
