@@ -86,3 +86,7 @@ https://www.vev.design/blog/scroll-animation-examples/
 # Feb 8th
 - [x] Was fixing like optimized issues regarding using milion/react scans no luck will figure out tomorrow
 - [x] Fixes image sizing similar sized to other cleanre
+
+# Feb 9th (Interview next morning)
+- [x] Adjusted color text for nav 
+- [x] adjustment color text for all
