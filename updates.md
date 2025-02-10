@@ -92,3 +92,6 @@ https://www.vev.design/blog/scroll-animation-examples/
 # Feb 9th (Interview next morning)
 - [x] Adjusted color text for nav 
 - [x] adjustment color text for all
+
+# Feb 10th Tired did meeting 4 hours very fun 
+- [x] updates all descriptions
