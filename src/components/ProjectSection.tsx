@@ -146,7 +146,7 @@ const ProjectsSection: React.FC = () => {
       icon: <Users className="w-6 h-6" />,
       title: "Project Lead, Lead UX/UI Designer",
       company: "Calcoy",
-      description: "Led development of AI-powered calendar app. Architected core features and interface enhancements using Next.js/React.",
+      description: "Developed a user-friendly calendar application that bridges the accessibility gap in digital time management. Born from personal struggles with traditional calendar apps, this project aims to help both calendar newcomers and experienced users better manage their time. Core features include flexible task management, social coordination through shared spaces, and smart recommendations to optimize daily routines. The app succeeds by prioritizing simplicity and forgiveness in the user experience, allowing users to maintain productivity without the pressure of strict time constraints.",
       tech: ["JavaScript", "React", "Node.js", "PostgreSQL", "OAuth", "Jina Ai(Embeddings)", "Express.js", "Vercel(Webhosting)"],
       period: "2024 - Current",
       links: [
