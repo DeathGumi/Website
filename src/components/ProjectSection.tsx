@@ -203,7 +203,7 @@ const ProjectsSection: React.FC = () => {
       icon: <Code className="w-6 h-6" />,
       title: "Lead Developer",
       company: "Food Truck Finder",
-      description: "Built food truck mapping app with interactive features to practice project management, testing, and user design priciples",
+      description: "Created a food truck finder that addresses common frustrations with existing food apps. Implemented unique features like real-time busyness tracking, dedicated menu sections (not just photos), and automatic map updates for open/closed status. Built with a focus on user convenience - providing accurate locations, multi-filter search, and up-to-date information that typical food apps often lack",
       tech: ["Next.js", "React Leaflet", "MVC-Architecture", "Javascript"],
       period: "2024",
       links: [
