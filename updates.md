@@ -64,6 +64,8 @@ Contact:
 - [x] specific wording + made the link pop out more wasnt very visible before
 
 - [ ] still need to add like a skills page
+- [ ] Need to add scountnsnag
+- [ ] maybe put reverse order when adding so the top stuff will be the more important
 
 # Scroll animations switch stuff up
 https://www.vev.design/blog/scroll-animation-examples/
