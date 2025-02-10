@@ -260,7 +260,7 @@ const ProjectsSection: React.FC = () => {
       icon: <Code className="w-6 h-6" />,
       title: "Designer and Developer",
       company: "Mina Hanna Portfolio",
-      description: "Designed and Developed a portfolio for a friend to practice user interface/design",
+      description: "Built a portfolio website with a unique FPS game-inspired interface, featuring interactive elements like a fingerprint scanner entry and spy-themed terminal UI. Exercised creative freedom to craft an engaging yet professional browsing experience that stands out from traditional portfolios",
       tech: ["Next.js", "Typescript"],
       period: "January 2025",
       links: [
