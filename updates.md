@@ -95,3 +95,6 @@ https://www.vev.design/blog/scroll-animation-examples/
 
 # Feb 10th Tired did meeting 4 hours very fun 
 - [x] updates all descriptions
+
+# Feb 11th
+- [x] About page optimizations
