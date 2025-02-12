@@ -69,6 +69,7 @@ Contact:
 
 # Scroll animations switch stuff up
 https://www.vev.design/blog/scroll-animation-examples/
+https://homesociete.ca/en/ I like the nav and the horizontal scroll
 
 # Feb 4th (deciding what to add)
 - [x] added analytics tracking

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Users, Code, Github, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 interface ImageModalProps {
   images: Array<{
@@ -33,14 +34,14 @@ const ImageModal: React.FC<ImageModalProps> = ({ images, currentIndex, onClose, 
         className="relative flex w-full max-w-7xl mx-4 h-[80vh] bg-gray-900/90 rounded-lg overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
-        {/* Navigation Buttons */}
         {currentIndex > 0 && (
           <button
             onClick={(e) => {
               e.stopPropagation();
               onNavigate(currentIndex - 1);
             }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors z-20"
+            aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -52,28 +53,34 @@ const ImageModal: React.FC<ImageModalProps> = ({ images, currentIndex, onClose, 
               e.stopPropagation();
               onNavigate(currentIndex + 1);
             }}
-            className="absolute right-[400px] top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
+            className="absolute right-[400px] top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors z-20"
+            aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
         )}
 
-        {/* Image Section */}
-        <div className="flex-1 p-4">
-          <img
-            src={currentImage.src}
-            alt={currentImage.title}
-            className="w-full h-full object-contain rounded-lg"
-          />
+        <div className="relative flex-1 p-4">
+          <div className="relative w-full h-full">
+            <Image
+              src={currentImage.src}
+              alt={currentImage.title}
+              fill
+              className="object-contain rounded-lg"
+              quality={90}
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+          </div>
         </div>
 
-        {/* Explanation Section */}
         <div className="w-96 border-l border-gray-700 p-6 overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-semibold">{currentImage.title}</h3>
             <button
               onClick={onClose}
               className="p-2 hover:bg-gray-800 rounded-full transition-colors"
+              aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
@@ -87,21 +94,23 @@ const ImageModal: React.FC<ImageModalProps> = ({ images, currentIndex, onClose, 
             </div>
           </div>
 
-          {/* Thumbnail Navigation */}
           <div className="mt-6 grid grid-cols-4 gap-2">
             {images.map((img, idx) => (
               <div
                 key={idx}
                 onClick={() => onNavigate(idx)}
                 className={`
-                  cursor-pointer rounded-lg overflow-hidden border-2 transition-colors
+                  relative cursor-pointer rounded-lg overflow-hidden border-2 transition-colors aspect-video
                   ${idx === currentIndex ? 'border-blue-500' : 'border-transparent hover:border-blue-500/50'}
                 `}
               >
-                <img
+                <Image
                   src={img.src}
                   alt={img.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 25vw, 100px"
+                  quality={75}
                 />
               </div>
             ))}
@@ -163,37 +172,37 @@ const ProjectsSection: React.FC = () => {
       ],
       images: [
         {
-          src: "/1.png",
+          src: "/1.webp",
           title: "Calendar Interface",
           explanation: "This is the typical calendar interface left is naviagation, top is where to change days, right is sidebar where the minicalendar, groups, filters, and tasks list are located"
         },
         {
-          src: "/2.png",
+          src: "/2.webp",
           title: "Smart Scheduling",
           explanation: "This is an example of the ai creating an eventm you can change the date and talk with the ai to optimize your schedule + conversation history on the right side"
         },
         {
-          src: "/3.png",
+          src: "/3.webp",
           title: "Group + Event added",
           explanation: "An event from the groups/server is created + the group/server is added to the filters"
         },
         {
-          src: "/4.png",
+          src: "/4.webp",
           title: "In server + week interface",
           explanation: "In this interface this time we are in the actual server itself in the week option where when we navigate on the minicalendar there is a signifier for what day and week we clicked on and for the calendar itself there is a highlight for the specifc day"
         },
         {
-          src: "/5.png",
+          src: "/5.webp",
           title: "Dashboard interface + Ai Insights + Upcoming tasks",
           explanation: "So this dashboard interface is meant to show to the user like stats over time on what percentage of tasks are finished and the goal of the app is to used these stats to learn from the user and to give recommendations and optimize the users schedule to increase their productivity and completion rate"
         },
         {
-          src: "/6.png",
+          src: "/6.webp",
           title: "Friends",
           explanation: "If you ever want friends to have a community or just to keep accountibility or plan with your friend you can add friends"
         },
         {
-          src: "/7.png",
+          src: "/7.webp",
           title: "Checkings friends calendar",
           explanation: "After you have a friend added you can view and check their individual calendar so you can find a day to go out or do something or you can remind them if they are missing something"
         }
@@ -215,42 +224,42 @@ const ProjectsSection: React.FC = () => {
       ],
       images: [
         {
-          src: "/f1.png",
+          src: "/f1.webp",
           title: "Initial page interface",
           explanation: "This was made to be a simple project to just put out a design of an application to track where food trucks are. (Used fake data for simplicity since there wasn't actually good data that I could find regarding food trucks near me. Left side is the food truck list, filter, and right side is the map and locations of food trucks that are currently available"
         },
         {
-          src: "/f2.png",
+          src: "/f2.webp",
           title: "Hover Modal",
           explanation: "When hovering the food trucks it gives detailed information of the food truck, how busy it is, the reviews, and the description"
         },
         {
-          src: "/f3.png",
+          src: "/f3.webp",
           title: "Filters",
           explanation: "Filters expanded with all the options predetermined (Price, Cuisine, Minimum Rating, Operating Status) It's preset to all but the user can click any of those choices"
         },
         {
-          src: "/f4.png",
+          src: "/f4.webp",
           title: "Food Truck Modal ",
           explanation: "In this modal you can see the review in menus(I put a separate menu tab cause food review apps like yelp typically dont have a menu), you can also delete reviews and delete food truck in this modal, and also has the general info"
         },
         {
-          src: "/f5.png", 
+          src: "/f5.webp",
           title: "Add review",
           explanation: "Straightforward you can add a review and an image"
         },
         {
-          src: "/f6.png",
+          src: "/f6.webp",
           title: "Menu",
           explanation: "Expanded menu"
         },
         {
-          src: "/f7.png",
+          src: "/f7.webp",
           title: "Add FoodTruck Form",
           explanation: "For owners they can add their foodtruck by filling out the form"
         },
         {
-          src: "/f8.png",
+          src: "/f8.webp",
           title: "Closed food trucks",
           explanation: "Once a food truck is closed it will still show on the list but in the closed food truck list and not appear on the maps until it reopens"
         }
@@ -272,37 +281,37 @@ const ProjectsSection: React.FC = () => {
       ],
       images: [
         {
-          src: "/m1.png",
+          src: "/m1.webp",
           title: "Inital Page",
-          explanation: " So this page in order to bypass it there is a fingerprint scanner on the top that you click originally this idea came cause Mina likes FPS games and I wanted to encorporate something regarding it. I was also inspired by a Valorant recap so I created like a spy/fps ui."
+          explanation: "So this page in order to bypass it there is a fingerprint scanner on the top that you click originally this idea came cause Mina likes FPS games and I wanted to encorporate something regarding it. I was also inspired by a Valorant recap so I created like a spy/fps ui."
         },
         {
-          src: "/m2.png",
+          src: "/m2.webp",
           title: "Main Directory",
           explanation: "Once you gain access from pressing the finger scanner you are led to the directory, I also added little details below like the time and like fake data analytics to not only fill the space but add some detail to make it look more friendly. The directory is simple with hover effects to show that the user is hovering over and titles that are clear and concise "
         },
         {
-          src: "/m3.png",
+          src: "/m3.webp",
           title: "Projects",
           explanation: "Mina wanted something simple to display his projects so I let him input whatever he wanted I just designed the page for him"
         },
         {
-          src: "/m4.png",
+          src: "/m4.webp",
           title: "Experience",
           explanation: "Mina just wanted to display his experience so we used the same template as the Project page"
         },
         {
-          src: "/m5.png",
+          src: "/m5.webp",
           title: "Contact",
           explanation: "For this page I just wanted it to be simple with the Logos not much to say here other than the themed messaging and same template as before"
         },
         {
-          src: "/m6.png",
+          src: "/m6.webp",
           title: "About",
           explanation: "This page I wanted to differentiate from the others since this one is about Mina so I wanted to separate his about from his education and coursework (Clear conscise and straight to the point)"
         }
       ]
-    },
+    }
   ];
 
   return (
@@ -355,14 +364,16 @@ const ProjectsSection: React.FC = () => {
                         {project.images.slice(0, 3).map((image, i) => (
                           <div 
                             key={i} 
-                            className="relative rounded-lg overflow-hidden bg-blue-900/30 group/image cursor-pointer"
+                            className="relative rounded-lg overflow-hidden bg-blue-900/30 group/image cursor-pointer aspect-video"
                             onClick={() => setSelectedImage({ projectIndex: index, imageIndex: i })}
-                            style={{ paddingBottom: '56.25%' }} 
                           >
-                            <img
+                            <Image
                               src={image.src}
                               alt={image.title}
-                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover/image:scale-105"
+                              fill
+                              className="object-cover transition-transform duration-300 group-hover/image:scale-105"
+                              sizes="(max-width: 768px) 33vw, 300px"
+                              quality={75}
                             />
                           </div>
                         ))}
