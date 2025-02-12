@@ -99,3 +99,6 @@ https://homesociete.ca/en/ I like the nav and the horizontal scroll
 
 # Feb 11th
 - [x] About page optimizations
+
+# Feb 12th
+- [x] Project optimization (Images + next + preloads)
