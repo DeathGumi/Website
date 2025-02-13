@@ -102,3 +102,7 @@ https://homesociete.ca/en/ I like the nav and the horizontal scroll
 
 # Feb 12th
 - [x] Project optimization (Images + next + preloads)
+
+# Feb 13th
+- [x] new animation experience page
+- [x] Detailed card and shadows
