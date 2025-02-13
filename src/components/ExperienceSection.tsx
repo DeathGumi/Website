@@ -119,14 +119,17 @@ const ExperienceSection: React.FC = () => {
           {experiences.map((exp, index) => (
             <div
               key={exp.title}
-              className="group relative opacity-0 animate-slide-up"
+              className="experience-card opacity-0"
               style={{ 
-                animationDelay: `${index * 150}ms`,
-                animationFillMode: 'forwards' 
-              }}
+                '--delay': `${index * 150}ms`
+              } as React.CSSProperties}
             >
-              <div className="bg-blue-900/60 backdrop-blur-sm rounded-lg p-6 hover:bg-blue-900/70 transition-all duration-300 hover:translate-y-[-2px]">
-                <div className="flex items-start gap-4">
+              <div className="group bg-blue-900/60 backdrop-blur-sm rounded-lg p-6 transition-all duration-500 hover:bg-blue-900/70 hover:translate-y-[-4px] hover:shadow-lg hover:shadow-blue-500/20 relative overflow-hidden">
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Card content */}
+                <div className="relative flex items-start gap-4">
                   <div className="p-2 bg-blue-800/30 rounded-lg">
                     {exp.icon}
                   </div>
@@ -171,12 +174,21 @@ const ExperienceSection: React.FC = () => {
         @keyframes slideUp {
           from { 
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
           }
           to {
             opacity: 1;
             transform: translateY(0);
           }
+        }
+
+        .experience-card {
+          animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation-delay: var(--delay);
+        }
+
+        .experience-card:hover .particle {
+          animation-duration: 1s;
         }
 
         @keyframes particleIn {
@@ -201,8 +213,8 @@ const ExperienceSection: React.FC = () => {
           100% {
             opacity: 0;
             transform: scale(0) translate(
-              ${Math.random() > 0.5 ? '-' : ''}${Math.random() * 50}px,
-              ${Math.random() > 0.5 ? '-' : ''}${Math.random() * 50}px
+              ${Math.random() >= 0.5 ? '-' : ''}${Math.random() * 50}px,
+              ${Math.random() >= 0.5 ? '-' : ''}${Math.random() * 50}px
             );
           }
         }
