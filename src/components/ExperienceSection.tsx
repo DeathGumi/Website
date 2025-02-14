@@ -84,6 +84,85 @@ const ParticleText: React.FC<{
   );
 };
 
+const AnimatedCard: React.FC<{ experience: Experience; index: number }> = ({ experience, index }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '-50px'
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className={`transform transition-all duration-1000 
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
+      style={{ 
+        transitionDelay: `${index * 200}ms`
+      }}
+    >
+      <div className="group bg-blue-900/60 backdrop-blur-sm rounded-lg p-6 transition-all duration-500 
+        hover:bg-blue-900/70 hover:translate-y-[-4px] hover:shadow-lg hover:shadow-blue-500/20 
+        relative overflow-hidden">
+        {/* Gradient overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-transparent to-blue-500/10 
+          opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        
+        {/* Card content */}
+        <div className="relative flex items-start gap-4">
+          <div className="p-2 bg-blue-800/30 rounded-lg">
+            {experience.icon}
+          </div>
+          
+          <div className="flex-1">
+            <div className="flex items-center justify-between mb-2">
+              <div>
+                <h3 className="text-xl font-semibold">{experience.title}</h3>
+                <p className="text-blue-300">{experience.company}</p>
+              </div>
+              <span className="text-sm text-gray-400">{experience.period}</span>
+            </div>
+
+            <p className="text-gray-300 mb-4">{experience.description}</p>
+
+            {experience.skills && (
+              <div className="flex flex-wrap gap-2 mb-3">
+                {experience.skills.map((item, i) => (
+                  <span 
+                    key={i}
+                    className="text-sm px-3 py-1 rounded-full bg-blue-800/40 text-blue-200 
+                      transform transition-transform duration-300 hover:scale-105"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ExperienceSection: React.FC = () => {
   const experiences: Experience[] = [
     {
@@ -117,80 +196,12 @@ const ExperienceSection: React.FC = () => {
 
         <div className="grid gap-6">
           {experiences.map((exp, index) => (
-            <div
-              key={exp.title}
-              className="experience-card opacity-0"
-              style={{ 
-                '--delay': `${index * 150}ms`
-              } as React.CSSProperties}
-            >
-              <div className="group bg-blue-900/60 backdrop-blur-sm rounded-lg p-6 transition-all duration-500 hover:bg-blue-900/70 hover:translate-y-[-4px] hover:shadow-lg hover:shadow-blue-500/20 relative overflow-hidden">
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Card content */}
-                <div className="relative flex items-start gap-4">
-                  <div className="p-2 bg-blue-800/30 rounded-lg">
-                    {exp.icon}
-                  </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <div>
-                        <h3 className="text-xl font-semibold">{exp.title}</h3>
-                        <p className="text-blue-300">{exp.company}</p>
-                      </div>
-                      <span className="text-sm text-gray-400">{exp.period}</span>
-                    </div>
-
-                    <p className="text-gray-300 mb-4">{exp.description}</p>
-
-                    {exp.skills && (
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {exp.skills.map((item, i) => (
-                          <span 
-                            key={i}
-                            className="text-sm px-3 py-1 rounded-full bg-blue-800/40 text-blue-200"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <AnimatedCard key={exp.title} experience={exp} index={index} />
           ))}
         </div>
       </div>
 
       <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-          from { 
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .experience-card {
-          animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          animation-delay: var(--delay);
-        }
-
-        .experience-card:hover .particle {
-          animation-duration: 1s;
-        }
-
         @keyframes particleIn {
           0% {
             opacity: 0;
@@ -217,14 +228,6 @@ const ExperienceSection: React.FC = () => {
               ${Math.random() >= 0.5 ? '-' : ''}${Math.random() * 50}px
             );
           }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        .animate-slide-up {
-          animation: slideUp 0.6s ease-out;
         }
 
         @keyframes scaleX {
