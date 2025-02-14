@@ -34,31 +34,27 @@ const ImageModal: React.FC<ImageModalProps> = ({ images, currentIndex, onClose, 
         className="relative flex w-full max-w-7xl mx-4 h-[80vh] bg-gray-900/90 rounded-lg overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
-        {currentIndex > 0 && (
           <button
             onClick={(e) => {
               e.stopPropagation();
-              onNavigate(currentIndex - 1);
+              onNavigate(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
             }}
             className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors z-20"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
-        )}
-        
-        {currentIndex < images.length - 1 && (
+
           <button
             onClick={(e) => {
               e.stopPropagation();
-              onNavigate(currentIndex + 1);
+              onNavigate(currentIndex === images.length - 1 ? 0 : currentIndex + 1);
             }}
             className="absolute right-[400px] top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors z-20"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
-        )}
 
         <div className="relative flex-1 p-4">
           <div className="relative w-full h-full">
