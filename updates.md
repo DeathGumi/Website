@@ -106,3 +106,9 @@ https://homesociete.ca/en/ I like the nav and the horizontal scroll
 # Feb 13th
 - [x] new animation experience page
 - [x] Detailed card and shadows
+
+# Feb 14th
+- [x] Viewprot for the expiernce section
+
+# Fevt 15th
+- [x] viewprot for the project section
