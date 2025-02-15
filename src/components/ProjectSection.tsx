@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Users, Code, Github, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -34,27 +34,27 @@ const ImageModal: React.FC<ImageModalProps> = ({ images, currentIndex, onClose, 
         className="relative flex w-full max-w-7xl mx-4 h-[80vh] bg-gray-900/90 rounded-lg overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onNavigate(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
-            }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors z-20"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onNavigate(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
+          }}
+          className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors z-20"
+          aria-label="Previous image"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onNavigate(currentIndex === images.length - 1 ? 0 : currentIndex + 1);
-            }}
-            className="absolute right-[400px] top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors z-20"
-            aria-label="Next image"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onNavigate(currentIndex === images.length - 1 ? 0 : currentIndex + 1);
+          }}
+          className="absolute right-[400px] top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors z-20"
+          aria-label="Next image"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
 
         <div className="relative flex-1 p-4">
           <div className="relative w-full h-full">
@@ -142,6 +142,122 @@ interface SelectedImageInfo {
   projectIndex: number;
   imageIndex: number;
 }
+
+const AnimatedCard: React.FC<{ project: Project; index: number; onImageClick: (projectIndex: number, imageIndex: number) => void }> = ({ 
+  project, 
+  index,
+  onImageClick 
+}) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '-50px'
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className={`transform transition-all duration-1000 
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
+      style={{ 
+        transitionDelay: `${index * 200}ms`
+      }}
+    >
+      <div className="group bg-blue-900/60 backdrop-blur-sm rounded-lg p-6 hover:bg-blue-900/70 transition-all duration-300 hover:translate-y-[-2px]">
+        <div className="flex items-start gap-4">
+          <div className="p-2 bg-blue-800/30 rounded-lg">
+            {project.icon}
+          </div>
+          
+          <div className="flex-1">
+            <div className="flex items-center justify-between mb-2">
+              <div>
+                <h3 className="text-xl font-semibold">{project.title}</h3>
+                <p className="text-blue-300">{project.company}</p>
+              </div>
+              <span className="text-sm text-gray-400">{project.period}</span>
+            </div>
+
+            <p className="text-gray-300 mb-4">{project.description}</p>
+
+            {project.images && project.images.length > 0 && (
+              <div className="grid grid-cols-3 gap-2 mb-4">
+                {project.images.slice(0, 3).map((image, i) => (
+                  <div 
+                    key={i} 
+                    className="relative rounded-lg overflow-hidden bg-blue-900/30 group/image cursor-pointer aspect-video"
+                    onClick={() => onImageClick(index, i)}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover/image:scale-105"
+                      sizes="(max-width: 768px) 33vw, 300px"
+                      quality={75}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {project.tech && (
+              <div className="flex flex-wrap gap-2 mb-3">
+                {project.tech.map((item, i) => (
+                  <span 
+                    key={i}
+                    className="text-sm px-3 py-1 rounded-full bg-blue-800/40 text-blue-200"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {project.links && (
+              <div className="flex gap-4 mt-4 pt-3 border-t border-blue-800/30">
+                {project.links.map((link, i) => (
+                  <a
+                    key={i}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-900/30 rounded-lg 
+                      text-gray-300 hover:text-blue-300 hover:bg-blue-900/50 transition-all duration-300"
+                  >
+                    {link.icon}
+                    <span className="text-sm">
+                      {link.label}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ProjectsSection: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<SelectedImageInfo | null>(null);
@@ -330,88 +446,13 @@ const ProjectsSection: React.FC = () => {
 
         <div className="grid gap-6">
           {projects.map((project, index) => (
-            <div
-              key={project.title}
-              className="group relative opacity-0 animate-slide-up"
-              style={{ 
-                animationDelay: `${index * 150}ms`,
-                animationFillMode: 'forwards' 
-              }}
-            >
-              <div className="bg-blue-900/60 backdrop-blur-sm rounded-lg p-6 hover:bg-blue-900/70 transition-all duration-300 hover:translate-y-[-2px]">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-blue-800/30 rounded-lg">
-                    {project.icon}
-                  </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <div>
-                        <h3 className="text-xl font-semibold">{project.title}</h3>
-                        <p className="text-blue-300">{project.company}</p>
-                      </div>
-                      <span className="text-sm text-gray-400">{project.period}</span>
-                    </div>
-
-                    <p className="text-gray-300 mb-4">{project.description}</p>
-
-                    {project.images && project.images.length > 0 && (
-                      <div className="grid grid-cols-3 gap-2 mb-4">
-                        {project.images.slice(0, 3).map((image, i) => (
-                          <div 
-                            key={i} 
-                            className="relative rounded-lg overflow-hidden bg-blue-900/30 group/image cursor-pointer aspect-video"
-                            onClick={() => setSelectedImage({ projectIndex: index, imageIndex: i })}
-                          >
-                            <Image
-                              src={image.src}
-                              alt={image.title}
-                              fill
-                              className="object-cover transition-transform duration-300 group-hover/image:scale-105"
-                              sizes="(max-width: 768px) 33vw, 300px"
-                              quality={75}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {project.tech && (
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {project.tech.map((item, i) => (
-                          <span 
-                            key={i}
-                            className="text-sm px-3 py-1 rounded-full bg-blue-800/40 text-blue-200"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    {project.links && (
-                      <div className="flex gap-4 mt-4 pt-3 border-t border-blue-800/30">
-                        {project.links.map((link, i) => (
-                          <a
-                            key={i}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 bg-blue-900/30 rounded-lg 
-                              text-gray-300 hover:text-blue-300 hover:bg-blue-900/50 transition-all duration-300"
-                          >
-                            {link.icon}
-                            <span className="text-sm">
-                              {link.label}
-                            </span>
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <AnimatedCard 
+              key={project.title} 
+              project={project} 
+              index={index}
+              onImageClick={(projectIndex, imageIndex) => 
+                setSelectedImage({ projectIndex, imageIndex })}
+            />
           ))}
         </div>
       </div>
@@ -436,23 +477,8 @@ const ProjectsSection: React.FC = () => {
           to { opacity: 1; }
         }
 
-        @keyframes slideUp {
-          from { 
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
         .animate-fade-in {
           animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        .animate-slide-up {
-          animation: slideUp 0.6s ease-out;
         }
 
         @keyframes scaleX {
