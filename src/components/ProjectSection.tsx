@@ -143,6 +143,78 @@ interface SelectedImageInfo {
   imageIndex: number;
 }
 
+const SplitRevealTitle: React.FC = () => {
+  return (
+    <div className="mb-12 text-center">
+      <div className="relative overflow-hidden">
+        <h2 
+          className="text-6xl mb-4 invisible"
+          style={{
+            fontFamily: 'Optima, Candara, sans-serif',
+            fontWeight: 700,
+            letterSpacing: '0.01em'
+          }}
+        >
+          Projects
+        </h2>
+        
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div
+            initial={{ clipPath: 'inset(0 50% 0 50%)' }}
+            whileInView={{ 
+              clipPath: 'inset(0 0 0 0)',
+              transition: {
+                duration: 1.2,
+                ease: [0.43, 0.13, 0.23, 0.96]
+              }
+            }}
+            viewport={{ once: true }}
+            className="text-6xl relative"
+            style={{
+              fontFamily: 'Optima, Candara, sans-serif',
+              fontWeight: 700,
+              letterSpacing: '0.01em',
+              textShadow: '0 0 15px rgba(255,255,255,0.3)'
+            }}
+          >
+            Projects
+          </motion.div>
+        </div>
+      </div>
+      <div className="flex justify-center gap-2">
+        <motion.div
+          className="h-[1px] bg-gradient-to-r from-gray-500 to-transparent w-16"
+          initial={{ x: 20, opacity: 0 }}
+          whileInView={{ 
+            x: 0, 
+            opacity: 1,
+            transition: {
+              duration: 0.8,
+              ease: [0.43, 0.13, 0.23, 0.96],
+              delay: 0.3
+            }
+          }}
+          viewport={{ once: true }}
+        />
+        <motion.div
+          className="h-[1px] bg-gradient-to-l from-gray-500 to-transparent w-16"
+          initial={{ x: -20, opacity: 0 }}
+          whileInView={{ 
+            x: 0, 
+            opacity: 1,
+            transition: {
+              duration: 0.8,
+              ease: [0.43, 0.13, 0.23, 0.96],
+              delay: 0.3
+            }
+          }}
+          viewport={{ once: true }}
+        />
+      </div>
+    </div>
+  );
+};
+
 const AnimatedCard: React.FC<{ project: Project; index: number; onImageClick: (projectIndex: number, imageIndex: number) => void }> = ({ 
   project, 
   index,
@@ -429,20 +501,7 @@ const ProjectsSection: React.FC = () => {
   return (
     <section id="projects" className="py-20 px-4">
       <div className="max-w-3xl mx-auto">
-        <div className="mb-12 text-center">
-          <h2 
-            className="text-6xl mb-4 opacity-0 animate-fade-in"
-            style={{
-              fontFamily: 'Optima, Candara, sans-serif',
-              fontWeight: 700,
-              letterSpacing: '0.01em',
-              textShadow: '0 0 15px rgba(255,255,255,0.3)'
-            }}
-          >
-            Projects
-          </h2>
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-gray-500 to-transparent mx-auto w-32 opacity-0 animate-scale-x" />
-        </div>
+        <SplitRevealTitle />
 
         <div className="grid gap-6">
           {projects.map((project, index) => (
@@ -470,33 +529,6 @@ const ProjectsSection: React.FC = () => {
           />
         )}
       </AnimatePresence>
-
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        @keyframes scaleX {
-          from { 
-            opacity: 0;
-            transform: scaleX(0);
-          }
-          to {
-            opacity: 1;
-            transform: scaleX(1);
-          }
-        }
-
-        .animate-scale-x {
-          animation: scaleX 0.8s ease-out 0.3s forwards;
-          transform-origin: left;
-        }
-      `}</style>
     </section>
   );
 };
