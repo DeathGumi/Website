@@ -48,6 +48,40 @@ const ContactSection = () => {
     }
   ];
 
+  // Title text animation configuration
+  const titleText = "Get in Touch".split('');
+  
+  const letterVariants = {
+    hidden: (i: number) => ({ 
+      y: Math.random() * 100 - 50,
+      x: Math.random() * 100 - 50,
+      opacity: 0,
+      scale: 0,
+      rotate: Math.random() * 180 - 90
+    }),
+    visible: {
+      y: 0,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100
+      }
+    },
+    hover: {
+      scale: 1.2,
+      rotate: Math.random() * 30 - 15,
+      transition: { 
+        duration: 0.2,
+        type: "spring",
+        damping: 10
+      }
+    }
+  };
+
   return (
     <div 
       id="contact"
@@ -60,13 +94,13 @@ const ContactSection = () => {
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        {/* Title Section */}
+        {/* Title Section with Magnetic Letters */}
         <motion.div 
           className="mb-16 text-center"
           variants={itemVariants}
         >
-          <h1 
-            className="text-6xl font-bold mb-4"
+          <motion.h1 
+            className="text-6xl font-bold mb-4 flex justify-center gap-1 flex-wrap"
             style={{
               fontFamily: 'Optima, Candara, sans-serif',
               fontWeight: 700,
@@ -74,8 +108,33 @@ const ContactSection = () => {
               textShadow: '0 0 15px rgba(255,255,255,0.3)'
             }}
           >
-            Get in Touch
-          </h1>
+            {titleText.map((char, i) => (
+              <motion.span
+                key={i}
+                custom={i}
+                variants={letterVariants}
+                initial="hidden"
+                whileInView="visible"
+                whileHover="hover"
+                viewport={{ once: true }}
+                transition={{
+                  default: {
+                    duration: 0.6,
+                    delay: i * 0.05,
+                    type: "spring",
+                    damping: 15
+                  }
+                }}
+                className="inline-block cursor-pointer"
+                style={{ 
+                  transformOrigin: "center",
+                  display: "inline-block"
+                }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </motion.h1>
           
           <motion.div
             className="h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent w-32 mx-auto"
