@@ -112,3 +112,6 @@ https://homesociete.ca/en/ I like the nav and the horizontal scroll
 
 # Fevt 15th
 - [x] viewprot for the project section
+
+# Feb 16th
+- [x] contact and project animations
